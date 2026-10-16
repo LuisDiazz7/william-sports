@@ -50,26 +50,14 @@ window.addEventListener(
 );
 
 /* ------------------------------------------------------------
-   Enlace activo según sección visible
+   Enlace activo según la página actual
    ------------------------------------------------------------ */
-const sections = document.querySelectorAll('main section[id]');
+const currentPage = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
 
-if ('IntersectionObserver' in window && sections.length) {
-  const sectionObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        const id = entry.target.getAttribute('id');
-        navLinks.forEach((link) => {
-          link.classList.toggle('is-active', link.getAttribute('href') === `#${id}`);
-        });
-      });
-    },
-    { rootMargin: '-45% 0px -50% 0px' }
-  );
-
-  sections.forEach((section) => sectionObserver.observe(section));
-}
+navLinks.forEach((link) => {
+  const href = (link.getAttribute('href') || '').split('/').pop().toLowerCase();
+  link.classList.toggle('is-active', href === currentPage);
+});
 
 /* ------------------------------------------------------------
    Año dinámico

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="William Olave — ojeador de talentos, entrenador de escuelas de fútbol y capacitador. Observar, formar y desarrollar dentro del fútbol.">
+  <title>Sobre mí | William Olave</title>
+
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@500;600&family=Cormorant:ital,wght@0,400;0,500;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Exo+2:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+  <!-- Header / Navbar -->
+  <header class="header">
+    <nav class="nav container">
+      <a href="index.html" class="nav__logo" aria-label="Ir a inicio">
+        <span class="nav__logo-text">WILLIAM</span>
+      </a>
+
+      <button class="nav__toggle" id="nav-toggle" aria-expanded="false" aria-label="Abrir menú de navegación">
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+      </button>
+
+      <div class="nav__menu" id="nav-menu">
+        <ul class="nav__list">
+          <li class="nav__item">
+            <a href="index.html" class="nav__link">Inicio</a>
+          </li>
+          <li class="nav__item">
+            <a href="desde-la-cancha.html" class="nav__link">Desde la cancha</a>
+          </li>
+          <li class="nav__item">
+            <a href="sobre-mi.html" class="nav__link is-active">Sobre mí</a>
+          </li>
+          <li class="nav__item">
+            <a href="areas.html" class="nav__link">Áreas de trabajo</a>
+          </li>
+          <li class="nav__item">
+            <a href="galeria.html" class="nav__link">Galería</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Sobre mí -->
+    <section id="sobre-mi" class="about about--editorial">
+      <div class="container">
+        <div class="about__grid">
+          <div class="about__media" data-reveal>
+            <div class="about__frame about__frame--editorial">
+              <img src="assets/images/willie.png" alt="Retrato de William Olave" class="about__img" loading="lazy"
+                decoding="async">
+            </div>
+          </div>
+
+          <div class="about__content" data-reveal>
+            <header class="section__header">
+              <span class="section__kicker">¿QUIÉN ES WILLIAM?</span>
+              <h2 class="section__title section__title--editorial">Formación, observación y capacitación</h2>
+            </header>
+
+            <div class="about__text-block">
+              <h3 class="about__subheading">Biografía</h3>
+              <p class="about__text">
+                William trabaja en el fútbol desde tres áreas complementarias: el ojeamiento de talentos, el
+                entrenamiento en escuelas de fútbol y las capacitaciones relacionadas con el juego.
+              </p>
+            </div>
+
+            <div class="about__text-block">
+              <h3 class="about__subheading">Metodología</h3>
+              <p class="about__text">
+                Su enfoque combina la observación del jugador, el desarrollo de sus características y la transmisión de
+                conocimientos a entrenadores y formadores.
+              </p>
+            </div>
+
+            <div class="about__text-block">
+              <h3 class="about__subheading">Filosofía</h3>
+              <p class="about__text">
+                El fútbol se observa, se enseña y se desarrolla: cada jugador tiene un potencial por reconocer y un
+                proceso por acompañar.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <a href="index.html" class="footer__logo">WILLIAM</a>
+        <p class="footer__phrase">EL FÚTBOL SE OBSERVA, SE ENSEÑA Y SE DESARROLLA</p>
+      </div>
+
+      <nav class="footer__nav" aria-label="Navegación del pie de página">
+        <ul class="footer__list">
+          <li class="footer__item"><a href="index.html" class="footer__link">Inicio</a></li>
+          <li class="footer__item"><a href="desde-la-cancha.html" class="footer__link">Desde la cancha</a></li>
+          <li class="footer__item"><a href="sobre-mi.html" class="footer__link">Sobre mí</a></li>
+          <li class="footer__item"><a href="areas.html" class="footer__link">Áreas de trabajo</a></li>
+          <li class="footer__item"><a href="galeria.html" class="footer__link">Galería</a></li>
+          <li class="footer__item"><a href="contacto.html" class="footer__link">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer__bottom">
+        <p class="footer__copy">© <span id="year"></span> William Olave. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Botones flotantes de contacto -->
+  <div class="social-float">
+    <a href="https://wa.me/56984267737?text=Hola%20William%2C%20vengo%20de%20tu%20p%C3%A1gina%20web%20y%20me%20gustar%C3%ADa%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20tus%20servicios."
+      class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Abrir WhatsApp con William">
+      <img src="assets/svg/whatsapp.svg" alt="" aria-hidden="true" class="wa-float__icon">
+      <span class="wa-float__pulse"></span>
+    </a>
+    <a href="https://www.instagram.com/williamssport.oficial" class="ig-float" target="_blank" rel="noopener noreferrer"
+      aria-label="Abrir perfil de Instagram de William">
+      <img src="assets/svg/instagram.svg" alt="" aria-hidden="true" class="ig-float__icon">
+    </a>
+  </div>
+
+  <!-- Lightbox Galería -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Vista ampliada de fotografía">
+    <div class="lightbox__backdrop" data-lightbox-close></div>
+    <button class="lightbox__close" id="lightbox-close" aria-label="Cerrar vista ampliada">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+          stroke-linejoin="round" />
+      </svg>
+    </button>
+    <div class="lightbox__content">
+      <img src="" alt="" class="lightbox__img" id="lightbox-img" loading="lazy" decoding="async">
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>
