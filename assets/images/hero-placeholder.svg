@@ -1,0 +1,24 @@
+<svg width="100%" height="100%" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1f2937"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </linearGradient>
+    <radialGradient id="accent" cx="70%" cy="20%" r="60%">
+      <stop offset="0%" stop-color="rgba(34,197,94,0.25)"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#g)"/>
+  <circle cx="600" cy="140" r="220" fill="url(#accent)"/>
+  <g opacity="0.5" stroke="rgba(255,255,255,0.08)" fill="none">
+    <rect x="60" y="80" width="680" height="440" rx="24"/>
+    <circle cx="400" cy="300" r="120"/>
+    <circle cx="400" cy="300" r="60"/>
+    <line x1="400" y1="80" x2="400" y2="520"/>
+    <line x1="60" y1="300" x2="740" y2="300"/>
+  </g>
+  <text x="50%" y="52%" text-anchor="middle" font-family="'Exo 2', sans-serif" font-size="28" letter-spacing="12" fill="rgba(255,255,255,0.5)">WILLIAM</text>
+  <text x="50%" y="58%" text-anchor="middle" font-family="'Inter', sans-serif" font-size="14" letter-spacing="16" fill="rgba(255,255,255,0.25)">ENTRENADOR · FÚTBOL</text>
+  <text x="50%" y="92%" text-anchor="middle" font-family="'Inter', sans-serif" font-size="12" letter-spacing="10" fill="rgba(156,163,175,0.6)">[REEMPLAZAR CON FOTO REAL DE WILLIAM ENTRENANDO]</text>
+</svg>
