@@ -1,0 +1,69 @@
+<svg width="100%" height="100%" viewBox="0 0 1400 1050" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Conos y guantes de entrenamiento sobre el césped">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0e3a23"/>
+      <stop offset="55%" stop-color="#14562f"/>
+      <stop offset="100%" stop-color="#092718"/>
+    </linearGradient>
+    <radialGradient id="luz" cx="30%" cy="18%" r="70%">
+      <stop offset="0%" stop-color="rgba(140,255,180,0.22)"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+    <linearGradient id="cone" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ff8a3d"/>
+      <stop offset="100%" stop-color="#d95a12"/>
+    </linearGradient>
+    <linearGradient id="glove" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f4f1e6"/>
+      <stop offset="100%" stop-color="#c9c6b8"/>
+    </linearGradient>
+    <linearGradient id="vig" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="55%" stop-color="transparent"/>
+      <stop offset="100%" stop-color="rgba(0,0,0,0.6)"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1400" height="1050" fill="url(#g)"/>
+  <rect width="1400" height="1050" fill="url(#luz)"/>
+
+  <!-- field lines -->
+  <g stroke="rgba(235,255,244,0.4)" stroke-width="5" fill="none">
+    <line x1="0" y1="770" x2="1400" y2="770"/>
+    <path d="M980 200 q120 300 60 620"/>
+  </g>
+
+  <!-- cones -->
+  <g>
+    <ellipse cx="980" cy="700" rx="120" ry="26" fill="rgba(0,0,0,0.3)"/>
+    <polygon points="980,470 900,700 1060,700" fill="url(#cone)"/>
+    <rect x="905" y="676" width="150" height="26" rx="6" fill="#c9500f"/>
+    <rect x="930" y="586" width="100" height="20" rx="6" fill="rgba(255,255,255,0.85)"/>
+  </g>
+  <g>
+    <ellipse cx="260" cy="820" rx="86" ry="20" fill="rgba(0,0,0,0.3)"/>
+    <polygon points="260,650 200,820 320,820" fill="url(#cone)"/>
+    <rect x="204" y="802" width="112" height="20" rx="6" fill="#c9500f"/>
+    <rect x="222" y="736" width="76" height="16" rx="6" fill="rgba(255,255,255,0.85)"/>
+  </g>
+
+  <!-- gloves -->
+  <g transform="translate(560,470) rotate(-12)">
+    <g fill="url(#glove)" stroke="#8f8c7f" stroke-width="3">
+      <path d="M0 120 q0 -70 44 -70 q18 0 26 22 q8 -30 34 -30 q26 0 30 34 q10 -22 32 -18 q24 4 22 30 q22 -12 34 8 q12 20 -8 40 l-40 90 q-30 44 -78 30 q-56 -16 -56 -76 z"/>
+    </g>
+    <g stroke="#8f8c7f" stroke-width="3">
+      <path d="M50 96 v50" fill="none"/>
+      <path d="M96 84 v54" fill="none"/>
+      <path d="M140 92 v50" fill="none"/>
+    </g>
+    <rect x="-16" y="150" width="220" height="52" rx="24" fill="#d95a12" opacity="0.9"/>
+  </g>
+
+  <g stroke="#1d7a44" stroke-width="4" stroke-linecap="round" opacity="0.5">
+    <path d="M120 1050 q10 -56 30 -84"/>
+    <path d="M700 1050 q-6 -66 10 -104"/>
+    <path d="M1240 1050 q12 -60 34 -90"/>
+  </g>
+
+  <rect width="1400" height="1050" fill="url(#vig)"/>
+</svg>

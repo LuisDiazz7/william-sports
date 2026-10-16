@@ -1,0 +1,84 @@
+<svg width="100%" height="100%" viewBox="0 0 1200 1500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Estadio nocturno visto desde la tribuna">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#05100b"/>
+      <stop offset="55%" stop-color="#0a1a12"/>
+      <stop offset="100%" stop-color="#0d2418"/>
+    </linearGradient>
+    <linearGradient id="pitch" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#124a2c"/>
+      <stop offset="100%" stop-color="#0a2f1c"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="rgba(150,255,190,0.30)"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+    <radialGradient id="beam" cx="50%" cy="0%" r="80%">
+      <stop offset="0%" stop-color="rgba(210,255,225,0.55)"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+    <linearGradient id="vig" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="60%" stop-color="transparent"/>
+      <stop offset="100%" stop-color="rgba(0,0,0,0.65)"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="1500" fill="url(#sky)"/>
+  <rect width="1200" height="1500" fill="url(#glow)"/>
+
+  <!-- lumière beams -->
+  <g opacity="0.5" fill="url(#beam)">
+    <polygon points="180,150 260,860 60,860"/>
+    <polygon points="520,150 620,900 420,900"/>
+    <polygon points="1020,150 940,860 1140,860"/>
+  </g>
+
+  <!-- floodlight towers -->
+  <g fill="#0c0f0d">
+    <rect x="168" y="150" width="10" height="690"/>
+    <rect x="1008" y="150" width="10" height="690"/>
+    <rect x="146" y="132" width="54" height="26" rx="4"/>
+    <rect x="986" y="132" width="54" height="26" rx="4"/>
+  </g>
+  <g fill="#e8fff0" opacity="0.9">
+    <circle cx="158" cy="145" r="9"/><circle cx="173" cy="145" r="9"/><circle cx="188" cy="145" r="9"/>
+    <circle cx="998" cy="145" r="9"/><circle cx="1013" cy="145" r="9"/><circle cx="1028" cy="145" r="9"/>
+  </g>
+
+  <!-- stands silhouette -->
+  <g fill="#060d09" opacity="0.95">
+    <rect x="0" y="620" width="1200" height="240"/>
+    <path d="M0 620 L1200 620 L1200 700 Q600 640 0 700 Z"/>
+  </g>
+  <g fill="#071009" opacity="0.7">
+    <rect x="60" y="660" width="30" height="200"/><rect x="300" y="660" width="30" height="200"/>
+    <rect x="540" y="660" width="30" height="200"/><rect x="780" y="660" width="30" height="200"/>
+    <rect x="1020" y="660" width="30" height="200"/>
+  </g>
+
+  <!-- pitch -->
+  <rect x="0" y="860" width="1200" height="640" fill="url(#pitch)"/>
+  <g stroke="rgba(235,255,244,0.55)" stroke-width="6" fill="none">
+    <rect x="90" y="980" width="1020" height="520" rx="6"/>
+    <line x1="90" y1="1240" x2="1110" y2="1240"/>
+    <circle cx="600" cy="1240" r="150"/>
+    <circle cx="600" cy="1240" r="10" fill="rgba(235,255,244,0.55)"/>
+    <rect x="330" y="1420" width="540" height="80"/>
+  </g>
+  <g stroke="rgba(9,40,24,0.5)" stroke-width="26" opacity="0.6">
+    <line x1="0" y1="960" x2="1200" y2="960"/>
+    <line x1="0" y1="1090" x2="1200" y2="1090"/>
+    <line x1="0" y1="1220" x2="1200" y2="1220"/>
+    <line x1="0" y1="1350" x2="1200" y2="1350"/>
+    <line x1="0" y1="1480" x2="1200" y2="1480"/>
+  </g>
+
+  <!-- players silhouettes -->
+  <g fill="#04120b" opacity="0.9">
+    <circle cx="430" cy="1150" r="16"/><rect x="416" y="1168" width="28" height="54" rx="8"/>
+    <circle cx="600" cy="1120" r="16"/><rect x="586" y="1138" width="28" height="54" rx="8"/>
+    <circle cx="760" cy="1200" r="16"/><rect x="746" y="1218" width="28" height="54" rx="8"/>
+  </g>
+
+  <rect width="1200" height="1500" fill="url(#vig)"/>
+</svg>
