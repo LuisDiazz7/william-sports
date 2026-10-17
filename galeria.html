@@ -24,7 +24,8 @@
   <header class="header">
     <nav class="nav container">
       <a href="index.html" class="nav__logo" aria-label="Ir a inicio">
-        <span class="nav__logo-text">WILLIAM</span>
+        <img src="assets/images/logo-williams-sport.png" alt="" aria-hidden="true" class="nav__logo-img">
+        <span class="nav__logo-text">WILLIAMS SPORT</span>
       </a>
 
       <button class="nav__toggle" id="nav-toggle" aria-expanded="false" aria-label="Abrir menú de navegación">
@@ -70,42 +71,41 @@
         <div class="gallery__grid">
           <figure class="gallery__item gallery__item--tall" data-reveal>
             <button class="gallery__button" data-gallery-btn data-src="assets/images/willie2.jpeg"
-              data-alt="William durante una jornada de trabajo">
-              <img src="assets/images/willie2.jpeg" alt="William durante una jornada de trabajo" class="gallery__img"
+              data-alt="William en el borde de la cancha">
+              <img src="assets/images/willie2.jpeg" alt="William en el borde de la cancha" class="gallery__img"
                 loading="lazy" decoding="async">
               <span class="gallery__overlay"><span class="gallery__zoom">Ampliar</span></span>
             </button>
-            <figcaption class="gallery__caption">Jornada de trabajo</figcaption>
+            <figcaption class="gallery__caption">En el borde de la cancha</figcaption>
           </figure>
 
           <figure class="gallery__item gallery__item--wide" data-reveal>
-            <button class="gallery__button" data-gallery-btn data-src="assets/images/cancha-nocturna.svg"
-              data-alt="Estadio nocturno visto desde la tribuna">
-              <img src="assets/images/cancha-nocturna.svg" alt="Estadio nocturno visto desde la tribuna"
-                class="gallery__img" loading="lazy" decoding="async">
-              <span class="gallery__overlay"><span class="gallery__zoom">Ampliar</span></span>
+            <button class="gallery__button" data-gallery-btn data-video="assets/videos/video1.mp4"
+              data-alt="Observación en estadio">
+              <video class="gallery__video" src="assets/videos/video1.mp4" autoplay muted playsinline loop
+                preload="auto" aria-label="Video de observación en estadio"></video>
+              <span class="gallery__overlay"><span class="gallery__zoom">Reproducir</span></span>
             </button>
             <figcaption class="gallery__caption">Observación en estadio</figcaption>
           </figure>
 
           <figure class="gallery__item" data-reveal>
-            <button class="gallery__button" data-gallery-btn data-src="assets/images/balon-pasto.svg"
-              data-alt="Balón de fútbol sobre el pasto">
-              <img src="assets/images/balon-pasto.svg" alt="Balón de fútbol sobre el pasto" class="gallery__img"
-                loading="lazy" decoding="async">
-              <span class="gallery__overlay"><span class="gallery__zoom">Ampliar</span></span>
-            </button>
-            <figcaption class="gallery__caption">Sobre el césped</figcaption>
-          </figure>
-
-          <figure class="gallery__item gallery__item--tall" data-reveal>
-            <button class="gallery__button" data-gallery-btn data-src="assets/images/willie.png"
-              data-alt="Retrato de William Olave">
-              <img src="assets/images/willie.png" alt="Retrato de William Olave" class="gallery__img" loading="lazy"
+            <button class="gallery__button" data-gallery-btn data-src="assets/images/willie22.jpeg" data-alt="Retrato">
+              <img src="assets/images/willie22.jpeg" alt="Retrato" class="gallery__img" loading="lazy"
                 decoding="async">
               <span class="gallery__overlay"><span class="gallery__zoom">Ampliar</span></span>
             </button>
             <figcaption class="gallery__caption">Retrato</figcaption>
+          </figure>
+
+          <figure class="gallery__item gallery__item--tall gallery__item--vertical" data-reveal>
+            <button class="gallery__button" data-gallery-btn data-video="assets/videos/willie-project-1-vertical.mp4"
+              data-alt="William Olave">
+              <video class="gallery__video" src="assets/videos/willie-project-1-vertical.mp4" autoplay muted
+                playsinline loop preload="auto" aria-label="Video de William Olave"></video>
+              <span class="gallery__overlay"><span class="gallery__zoom">Reproducir</span></span>
+            </button>
+            <figcaption class="gallery__caption">William Olave</figcaption>
           </figure>
 
           <figure class="gallery__item" data-reveal>
@@ -119,12 +119,11 @@
           </figure>
 
           <figure class="gallery__item gallery__item--wide" data-reveal>
-            <button class="gallery__button" data-gallery-btn data-src="assets/images/service-capacitaciones.svg"
-              data-alt="Pizarra táctica durante una capacitación de fútbol">
-              <img src="assets/images/service-capacitaciones.svg"
-                alt="Pizarra táctica durante una capacitación de fútbol" class="gallery__img" loading="lazy"
-                decoding="async">
-              <span class="gallery__overlay"><span class="gallery__zoom">Ampliar</span></span>
+            <button class="gallery__button" data-gallery-btn data-video="assets/videos/video2.mp4"
+              data-alt="Capacitación">
+              <video class="gallery__video" src="assets/videos/video2.mp4" autoplay muted playsinline loop
+                preload="auto" aria-label="Video de capacitación"></video>
+              <span class="gallery__overlay"><span class="gallery__zoom">Reproducir</span></span>
             </button>
             <figcaption class="gallery__caption">Capacitación</figcaption>
           </figure>
@@ -181,7 +180,8 @@
       </svg>
     </button>
     <div class="lightbox__content">
-      <img src="" alt="" class="lightbox__img" id="lightbox-img" loading="lazy" decoding="async">
+      <img src="" alt="" class="lightbox__img" id="lightbox-img" loading="lazy" decoding="async" hidden>
+      <video src="" class="lightbox__video" id="lightbox-video" controls playsinline muted hidden></video>
     </div>
   </div>
 

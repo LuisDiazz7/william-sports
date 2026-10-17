@@ -71,11 +71,28 @@ if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 const galleryButtons = document.querySelectorAll('[data-gallery-btn]');
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightbox-img');
+const lightboxVideo = document.getElementById('lightbox-video');
 const lightboxClose = document.getElementById('lightbox-close');
 const lightboxBackdrop = document.querySelector('[data-lightbox-close]');
 
+const resetLightboxMedia = () => {
+  if (lightboxImg) {
+    lightboxImg.hidden = true;
+    lightboxImg.src = '';
+    lightboxImg.alt = '';
+  }
+  if (lightboxVideo) {
+    lightboxVideo.pause();
+    lightboxVideo.hidden = true;
+    lightboxVideo.removeAttribute('src');
+    lightboxVideo.load();
+  }
+};
+
 const openLightbox = (src, alt) => {
   if (!lightbox || !lightboxImg || !src) return;
+  resetLightboxMedia();
+  lightboxImg.hidden = false;
   lightboxImg.src = src;
   lightboxImg.alt = alt || '';
   lightbox.classList.add('is-active');
@@ -83,28 +100,46 @@ const openLightbox = (src, alt) => {
   if (lightboxClose) lightboxClose.focus();
 };
 
+const openVideoLightbox = (src) => {
+  if (!lightbox || !lightboxVideo || !src) return;
+  resetLightboxMedia();
+  lightboxVideo.hidden = false;
+  lightboxVideo.src = src;
+  lightbox.classList.add('is-active');
+  document.body.style.overflow = 'hidden';
+  const played = lightboxVideo.play();
+  if (played && typeof played.catch === 'function') played.catch(() => {});
+  if (lightboxClose) lightboxClose.focus();
+};
+
 const closeLightbox = () => {
-  if (!lightbox || !lightboxImg) return;
+  if (!lightbox) return;
   lightbox.classList.remove('is-active');
   document.body.style.overflow = '';
   setTimeout(() => {
-    if (!lightbox.classList.contains('is-active')) {
-      lightboxImg.src = '';
-      lightboxImg.alt = '';
-    }
+    if (!lightbox.classList.contains('is-active')) resetLightboxMedia();
   }, 300);
 };
 
 galleryButtons.forEach((btn) => {
+  const open = () => {
+    const video = btn.getAttribute('data-video');
+    if (video) {
+      openVideoLightbox(video);
+      return;
+    }
+    openLightbox(btn.getAttribute('data-src'), btn.getAttribute('data-alt'));
+  };
+
   btn.addEventListener('click', (e) => {
     e.preventDefault();
-    openLightbox(btn.getAttribute('data-src'), btn.getAttribute('data-alt'));
+    open();
   });
 
   btn.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
-      openLightbox(btn.getAttribute('data-src'), btn.getAttribute('data-alt'));
+      open();
     }
   });
 });

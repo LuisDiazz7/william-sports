@@ -1,0 +1,422 @@
+/* ============================================================
+   WILLIAM SPORT · Componente "Clínica Certificado Monitor"
+   Tarjeta flotante del evento + modal de detalles.
+   Prefijos: evento-card / evento-modal / evento-btn
+   ============================================================ */
+
+:root {
+  --evento-gold: #f6c21c;
+  --evento-gold-hover: #ffd54d;
+  --evento-card-bg: rgba(11, 21, 48, 0.96);
+  --evento-line: rgba(242, 238, 228, 0.16);
+  --evento-muted: #9aa5b4;
+  --evento-accent: #8ab6ff;
+  --evento-wa: #25d366;
+  --evento-wa-hover: #3ee07c;
+  --evento-wa-text: #04101f;
+}
+
+body.evento-no-scroll {
+  overflow: hidden;
+}
+
+/* ------------------------------------------------------------
+   Tarjeta flotante
+   ------------------------------------------------------------ */
+.evento-card {
+  position: fixed;
+  right: 18px;
+  bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+  z-index: 44;
+  width: min(360px, calc(100vw - 36px));
+  padding: 12px;
+  border: 1px solid var(--evento-gold);
+  border-radius: 10px;
+  background: var(--evento-card-bg);
+  box-shadow: 0 50px 90px -50px rgba(0, 0, 0, 0.95), 0 12px 30px -14px rgba(0, 0, 0, 0.7);
+  font-family: var(--font-sans);
+  color: var(--color-cream);
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out);
+}
+
+.evento-card.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.evento-card[hidden] {
+  display: none;
+}
+
+.evento-card__head {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.evento-card__thumb {
+  flex: none;
+  width: 84px;
+  height: 84px;
+  border-radius: 6px;
+  object-fit: cover;
+  display: block;
+  background: var(--color-surface-2);
+}
+
+.evento-card__info {
+  flex: 1;
+  min-width: 0;
+}
+
+.evento-card__label {
+  margin: 0 0 3px;
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--evento-gold);
+}
+
+.evento-card__title {
+  margin: 0 0 4px;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--color-cream);
+}
+
+.evento-card__when {
+  margin: 0;
+  font-size: 0.82rem;
+  line-height: 1.4;
+  color: var(--evento-muted);
+}
+
+/* Cuenta regresiva */
+.evento-card__countdown {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.evento-unit {
+  padding: 7px 4px 6px;
+  border: 1px solid var(--evento-line);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  text-align: center;
+}
+
+.evento-unit__num {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-cream);
+  font-variant-numeric: tabular-nums;
+}
+
+.evento-unit__label {
+  display: block;
+  margin-top: 3px;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--evento-muted);
+}
+
+.evento-card__done {
+  margin: 12px 0 0;
+  padding: 9px;
+  border: 1px dashed var(--evento-gold);
+  border-radius: 6px;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-align: center;
+  color: var(--evento-gold);
+}
+
+/* El atributo [hidden] debe ganarle a los display de cada pieza */
+.evento-card__done[hidden],
+.evento-card__countdown[hidden],
+.evento-btn[hidden] {
+  display: none;
+}
+
+.evento-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+/* ------------------------------------------------------------
+   Botones (tarjeta + modal)
+   ------------------------------------------------------------ */
+.evento-btn {
+  flex: 1 1 130px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 10px 16px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out);
+}
+
+.evento-btn--gold {
+  background: var(--evento-gold);
+  color: #0b1530;
+}
+
+.evento-btn--gold:hover {
+  background: var(--evento-gold-hover);
+}
+
+.evento-btn--wa {
+  background: var(--evento-wa);
+  color: var(--evento-wa-text);
+}
+
+.evento-btn--wa:hover {
+  background: var(--evento-wa-hover);
+}
+
+.evento-btn--ghost {
+  background: transparent;
+  border-color: var(--evento-line);
+  color: var(--color-cream);
+}
+
+.evento-btn--ghost:hover {
+  border-color: var(--color-cream);
+}
+
+.evento-card :focus-visible,
+.evento-modal :focus-visible {
+  outline: 2px solid var(--evento-accent);
+  outline-offset: 2px;
+}
+
+/* ------------------------------------------------------------
+   Modal de detalles
+   ------------------------------------------------------------ */
+.evento-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.evento-modal[hidden] {
+  display: none;
+}
+
+.evento-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(2, 4, 10, 0.8);
+}
+
+.evento-modal__panel {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  max-height: calc(100vh - 40px);
+  max-height: calc(100svh - 40px);
+  overflow: auto;
+  border: 1px solid var(--evento-gold);
+  border-radius: 12px;
+  background: var(--evento-card-bg);
+  box-shadow: 0 60px 120px -40px rgba(0, 0, 0, 0.95);
+}
+
+.evento-modal__close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 1px solid var(--evento-line);
+  border-radius: 50%;
+  background: rgba(4, 12, 23, 0.72);
+  color: var(--color-cream);
+  font-family: inherit;
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+}
+
+.evento-modal__close:hover {
+  background: rgba(4, 12, 23, 0.95);
+  border-color: var(--color-cream);
+}
+
+.evento-modal__grid {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+}
+
+.evento-modal__media {
+  margin: 0;
+  min-height: 100%;
+}
+
+.evento-modal__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px 0 0 12px;
+}
+
+.evento-modal__media img[hidden] {
+  display: none;
+}
+
+.evento-modal__content {
+  padding: 28px 26px;
+}
+
+.evento-modal__kicker {
+  display: block;
+  margin-bottom: 8px;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--evento-gold);
+}
+
+.evento-modal__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-cream);
+}
+
+.evento-modal__accent {
+  color: var(--evento-gold);
+}
+
+.evento-modal__data {
+  display: grid;
+  gap: 10px;
+  margin: 18px 0;
+}
+
+.evento-modal__data>div {
+  display: grid;
+  gap: 2px;
+}
+
+.evento-modal__data dt {
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--evento-accent);
+}
+
+.evento-modal__data dd {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--color-cream-soft);
+}
+
+.evento-modal__contact {
+  margin: 0 0 18px;
+  font-size: 0.88rem;
+  color: var(--evento-muted);
+}
+
+.evento-modal__phone {
+  color: var(--color-cream);
+  font-weight: 600;
+  user-select: text;
+}
+
+.evento-modal__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* ------------------------------------------------------------
+   Responsive
+   ------------------------------------------------------------ */
+@media (max-width: 760px) {
+  .evento-modal__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .evento-modal__media {
+    min-height: 0;
+  }
+
+  .evento-modal__media img {
+    aspect-ratio: 1 / 1;
+    border-radius: 12px 12px 0 0;
+  }
+
+  .evento-modal__content {
+    padding: 22px 20px;
+  }
+}
+
+@media (max-width: 560px) {
+  .evento-card {
+    left: 12px;
+    right: 12px;
+    bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+    width: auto;
+    max-width: none;
+  }
+
+  .evento-card__thumb {
+    width: 64px;
+    height: 64px;
+  }
+
+  .evento-modal {
+    padding: 12px;
+  }
+
+  .evento-modal__panel {
+    max-height: calc(100vh - 24px);
+    max-height: calc(100svh - 24px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .evento-card {
+    transition: none;
+  }
+}
