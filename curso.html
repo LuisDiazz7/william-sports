@@ -68,8 +68,8 @@
   .btn-wa:hover { background: #3be07c; }
   .btn svg { width: 16px; height: 16px; flex: none; }
 
-  /* ---------- encabezado ---------- */
-  header.top {
+  /* ---------- encabezado (igual que en el resto del sitio) ---------- */
+  .header {
     position: fixed;
     inset: 0 0 auto 0;
     height: var(--header-h);
@@ -78,16 +78,49 @@
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     border-bottom: 1px solid rgba(236, 231, 220, 0.07);
-    padding-inline: max(16px, env(safe-area-inset-left, 0px)) max(16px, env(safe-area-inset-right, 0px));
   }
-  header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 100%; }
-  .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-  .brand img { height: 3.5rem; width: auto; display: block; }
-  .brand span { font-family: var(--label); font-weight: 800; letter-spacing: 0.2em; font-size: 0.85rem; color: var(--fg); white-space: nowrap; }
-  nav.links { display: flex; align-items: center; gap: clamp(1rem, 3vw, 1.75rem); flex-wrap: wrap; justify-content: flex-end; }
-  nav.links a { text-decoration: none; color: var(--fg-soft); font-weight: 500; font-size: 0.95rem; padding: 0.35rem 0; transition: color 0.2s ease; }
-  nav.links a:hover, nav.links a[aria-current] { color: var(--fg); }
-  nav.links a[aria-current] { border-bottom: 2px solid var(--accent); }
+  .container { width: min(1240px, calc(100% - 2.5rem)); margin-inline: auto; }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 100%; gap: 1.5rem; }
+  .nav__logo { display: inline-flex; align-items: center; gap: 0.75rem; }
+  .nav__logo-img { height: 3.5rem; width: auto; display: block; }
+  .nav__logo-text { font-family: var(--label); font-weight: 800; font-size: 0.85rem; letter-spacing: 0.2em; color: var(--fg); white-space: nowrap; }
+  .nav__menu { display: flex; align-items: center; gap: clamp(1.25rem, 4vw, 3rem); }
+  .nav__list { display: flex; gap: clamp(1rem, 3vw, 2rem); }
+  .nav__item { display: flex; }
+  .nav__link { position: relative; font-size: 0.95rem; font-weight: 500; color: var(--fg-soft); padding: 0.35rem 0; transition: color 0.32s cubic-bezier(0.22, 1, 0.36, 1); }
+  .nav__link::after { content: ""; position: absolute; left: 0; right: 100%; bottom: 0; height: 1px; background: var(--accent); transition: right 0.32s cubic-bezier(0.22, 1, 0.36, 1); }
+  .nav__link:hover, .nav__link:focus-visible { color: var(--fg); }
+  .nav__link:hover::after, .nav__link:focus-visible::after, .nav__link.is-active::after { right: 0; }
+  .nav__link.is-active { color: var(--fg); }
+  .nav__toggle { display: none; flex-direction: column; gap: 0.42rem; padding: 0.5rem; }
+  .nav__toggle-bar { width: 1.7rem; height: 1.5px; background: var(--fg); transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.18s ease; }
+
+  @media (max-width: 980px) {
+    .nav__toggle { display: flex; }
+    .nav__menu {
+      position: absolute;
+      top: var(--header-h);
+      left: 1rem;
+      right: 1rem;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.25rem;
+      padding: 1.5rem;
+      background: rgba(4, 12, 23, 0.98);
+      border: 1px solid var(--line);
+      box-shadow: 0 50px 90px -50px rgba(0, 0, 0, 0.95);
+      opacity: 0;
+      transform: translateY(-12px);
+      pointer-events: none;
+      transition: opacity 0.32s cubic-bezier(0.22, 1, 0.36, 1), transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .nav__menu.is-open { opacity: 1; transform: translateY(0); pointer-events: all; }
+    .nav__list { flex-direction: column; align-items: flex-start; gap: 1rem; width: 100%; }
+    .nav__link { display: block; padding: 0.5rem 0; font-size: 1.05rem; }
+    .nav__toggle.is-open .nav__toggle-bar:nth-child(1) { transform: translateY(0.52rem) rotate(45deg); }
+    .nav__toggle.is-open .nav__toggle-bar:nth-child(2) { opacity: 0; }
+    .nav__toggle.is-open .nav__toggle-bar:nth-child(3) { transform: translateY(-0.52rem) rotate(-45deg); }
+  }
 
   /* ---------- portada ---------- */
   .hero { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); gap: clamp(28px, 5vw, 72px); align-items: center; padding-block: clamp(32px, 6vw, 72px); }
@@ -183,7 +216,6 @@
     .flyer { width: min(100%, 380px); }
     .cols { grid-template-columns: minmax(0, 1fr); }
     aside.reg { position: static; }
-    nav.links a:not([aria-current]):not(.keep) { display: none; }
   }
   @media (max-width: 560px) {
     dl.facts > div { grid-template-columns: minmax(0, 1fr); gap: 4px; }
@@ -197,19 +229,39 @@
 </head>
 <body>
 
-<header class="top">
-  <div class="wrap">
-    <a class="brand" href="index.html" aria-label="Williams Sport, inicio">
-      <img alt="" src="assets/images/logo-williams-sport.png">
-      <span>WILLIAMS SPORT</span>
+<header class="header">
+  <nav class="nav container">
+    <a href="index.html" class="nav__logo" aria-label="Ir a inicio">
+      <img src="assets/images/logo-williams-sport.png" alt="" aria-hidden="true" class="nav__logo-img">
+      <span class="nav__logo-text">WILLIAMS SPORT</span>
     </a>
-    <nav class="links" aria-label="Principal">
-      <a class="keep" href="index.html">Inicio</a>
-      <a href="areas.html">Áreas de trabajo</a>
-      <a href="#evento" aria-current="page">Clínica</a>
-      <a class="keep" href="contacto.html">Contacto</a>
-    </nav>
-  </div>
+
+    <button class="nav__toggle" id="nav-toggle" aria-expanded="false" aria-label="Abrir menú de navegación">
+      <span class="nav__toggle-bar"></span>
+      <span class="nav__toggle-bar"></span>
+      <span class="nav__toggle-bar"></span>
+    </button>
+
+    <div class="nav__menu" id="nav-menu">
+      <ul class="nav__list">
+        <li class="nav__item">
+          <a href="index.html" class="nav__link">Inicio</a>
+        </li>
+        <li class="nav__item">
+          <a href="desde-la-cancha.html" class="nav__link">Desde la cancha</a>
+        </li>
+        <li class="nav__item">
+          <a href="sobre-mi.html" class="nav__link">Sobre mí</a>
+        </li>
+        <li class="nav__item">
+          <a href="areas.html" class="nav__link">Áreas de trabajo</a>
+        </li>
+        <li class="nav__item">
+          <a href="galeria.html" class="nav__link">Galería</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 </header>
 
 <main id="evento">
@@ -368,6 +420,7 @@
 </div>
 <div class="toast" id="toast" role="status" hidden></div>
 
+<script src="assets/js/main.js"></script>
 <script>
 (function () {
   // Pega aquí el link de pago de Webpay cuando lo tengas. Mientras esté vacío, los botones muestran un aviso.
