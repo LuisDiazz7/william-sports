@@ -17,7 +17,7 @@
 
   <!-- CSS -->
   <link rel="stylesheet" href="assets/css/styles.css?v=18">
-  <link rel="stylesheet" href="assets/css/entrenamientos.css?v=2">
+  <link rel="stylesheet" href="assets/css/entrenamientos.css?v=5">
 </head>
 
 <body>
@@ -68,35 +68,8 @@
     <section id="entrenamientos" class="work">
       <div class="container">
 
-        <header class="work__header" data-reveal>
-          <span class="work__eyebrow">ENTRENAMIENTOS</span>
-          <h1 class="work__title">Entrenamientos personalizados de fútbol</h1>
-          <p class="work__subtitle">
-            Sesiones individuales o en grupo, pensadas para tu posición, tu nivel y tus objetivos.
-            Entendemos dónde estás y hacia dónde quieres llegar.
-          </p>
-          <p class="entren-cta">
-            <a class="service-link" href="https://wa.me/56984267737?text=Hola%2C%20quiero%20consultar%20por%20entrenamientos%20personalizados"
-              target="_blank" rel="noopener noreferrer">
-              Consultar por entrenamientos
-              <span class="service-link__arrow" aria-hidden="true">→</span>
-            </a>
-          </p>
-        </header>
-
-        <!-- Videos -->
-        <div class="entren-block">
-          <div class="work__header" data-reveal>
-            <h2 class="service-row__title">Videos de entrenamiento</h2>
-            <p class="work__subtitle">
-              Algunas ideas de trabajo con balón. Pronto se sumarán grabaciones de las sesiones.
-            </p>
-          </div>
-          <div class="videos-grid" id="videos-grid"></div>
-        </div>
-
         <!-- Qué trabajamos -->
-        <div class="entren-block">
+        <div class="entren-block entren-block--first">
           <div class="work__header" data-reveal>
             <h2 class="service-row__title">Qué trabajamos</h2>
             <p class="work__subtitle">
@@ -105,22 +78,27 @@
           </div>
           <div class="temas">
             <article class="tema" data-reveal>
+              <span class="tema__num">01</span>
               <h3 class="tema__title">Técnica</h3>
               <p class="tema__text">Control, pase, perfil y definición, corrigiendo el detalle que marca la diferencia.</p>
             </article>
             <article class="tema" data-reveal>
+              <span class="tema__num">02</span>
               <h3 class="tema__title">Táctica</h3>
               <p class="tema__text">Cómo ocupar el espacio, leer al rival y entender el juego colectivo.</p>
             </article>
             <article class="tema" data-reveal>
+              <span class="tema__num">03</span>
               <h3 class="tema__title">Toma de decisiones</h3>
               <p class="tema__text">Elegir mejor y más rápido, con juegos que imitan lo que pasa en un partido.</p>
             </article>
             <article class="tema" data-reveal>
+              <span class="tema__num">04</span>
               <h3 class="tema__title">Físico</h3>
               <p class="tema__text">Fuerza, velocidad y resistencia entrenadas con balón y sin balón.</p>
             </article>
             <article class="tema" data-reveal>
+              <span class="tema__num">05</span>
               <h3 class="tema__title">Fortaleza mental</h3>
               <p class="tema__text">Confianza, concentración y manejo de la presión en los momentos que deciden.</p>
             </article>
@@ -129,19 +107,47 @@
 
         <!-- Sedes -->
         <div class="entren-block">
+          <article class="service-row sedes-row" data-reveal>
+            <div class="service-row__media">
+              <figure class="polaroid" style="--r:-2deg" data-polaroid>
+                <div class="polaroid__media polaroid__media--square">
+                  <img src="assets/images/personalizados-afiche.jpeg"
+                    alt="Afiche de Personalizados en Fútbol de Williams Sport con sus sedes" loading="lazy" decoding="async">
+                </div>
+                <figcaption class="polaroid__caption">Personalizados en fútbol</figcaption>
+                <span class="polaroid__glare" aria-hidden="true"></span>
+              </figure>
+            </div>
+            <div class="service-row__body">
+              <h2 class="service-row__title">Sedes</h2>
+              <p class="work__subtitle sedes-row__text">
+                Entrenamos en varias comunas de Santiago y en la zona sur. Pregúntanos por la sede más cercana a ti.
+              </p>
+              <ul class="sedes">
+                <li class="sede"><svg class="sede__pin" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.6" fill="currentColor"/></svg><span>Chicureo</span></li>
+                <li class="sede"><svg class="sede__pin" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.6" fill="currentColor"/></svg><span>La Reina</span></li>
+                <li class="sede"><svg class="sede__pin" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.6" fill="currentColor"/></svg><span>Malloco</span></li>
+                <li class="sede"><svg class="sede__pin" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.6" fill="currentColor"/></svg><span>Cerro Navia</span></li>
+                <li class="sede"><svg class="sede__pin" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.6" fill="currentColor"/></svg><span>Litueche</span> <span class="sede__badge">Nuevo</span></li>
+              </ul>
+              <a class="service-link" href="https://wa.me/56984267737?text=Hola%2C%20quiero%20consultar%20por%20entrenamientos%20personalizados"
+                target="_blank" rel="noopener noreferrer">
+                Consultar por entrenamientos
+                <span class="service-link__arrow" aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+        </div>
+
+        <!-- Videos -->
+        <div class="entren-block">
           <div class="work__header" data-reveal>
-            <h2 class="service-row__title">Sedes</h2>
+            <h2 class="service-row__title">Videos de entrenamiento</h2>
             <p class="work__subtitle">
-              Entrenamos en varias comunas de Santiago y en la zona sur. Pregúntanos por la sede más cercana a ti.
+              Así se viven nuestras sesiones de entrenamiento.
             </p>
           </div>
-          <ul class="sedes" data-reveal>
-            <li class="sede">Chicureo</li>
-            <li class="sede">La Reina</li>
-            <li class="sede">Malloco</li>
-            <li class="sede">Cerro Navia</li>
-            <li class="sede">Litueche</li>
-          </ul>
+          <div class="videos-grid" id="videos-grid"></div>
         </div>
 
       </div>
@@ -221,22 +227,16 @@
   <script>
     const VIDEOS = [
       {
-        titulo: 'Trabajo técnico individual',
-        descripcion: 'Conducción, perfilado y primer control a distintas velocidades.',
+        titulo: 'Trabajo técnico con conos',
+        descripcion: 'Ejercicios de coordinación, desplazamiento y técnica individual.',
         youtube: '',
-        archivo: ''
+        archivo: 'assets/videos/personalizado-1.mp4'
       },
       {
-        titulo: 'Toma de decisiones en juego',
-        descripcion: 'Juegos reducidos para leer al rival y elegir más rápido.',
+        titulo: 'Juego en equipos',
+        descripcion: 'Partidos reducidos para leer el juego y tomar mejores decisiones.',
         youtube: '',
-        archivo: ''
-      },
-      {
-        titulo: 'Preparación física con balón',
-        descripcion: 'Fuerza, velocidad y resistencia entrenadas dentro del contexto del partido.',
-        youtube: '',
-        archivo: ''
+        archivo: 'assets/videos/personalizado-2.mp4'
       }
     ];
 
@@ -274,9 +274,16 @@
           media.appendChild(iframe);
         } else if (video.archivo) {
           const videoEl = document.createElement('video');
+          // Se reproducen solos: el navegador solo lo permite si están en silencio
           videoEl.controls = true;
-          videoEl.preload = 'metadata';
-          videoEl.src = video.archivo;
+          videoEl.autoplay = true;
+          videoEl.muted = true;
+          videoEl.loop = true;
+          videoEl.preload = 'auto';
+          videoEl.playsInline = true;
+          videoEl.setAttribute('muted', '');
+          // #t=0.1 muestra el primer cuadro del video como portada
+          videoEl.src = video.archivo + '#t=0.1';
           videoEl.setAttribute('aria-label', video.titulo);
           media.appendChild(videoEl);
         } else {
