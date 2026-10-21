@@ -219,6 +219,7 @@ p {
 .nav__link {
   position: relative;
   font-size: 0.95rem;
+  white-space: nowrap;
   font-weight: 500;
   color: var(--color-cream-soft);
   padding: 0.35rem 0;
@@ -1351,7 +1352,7 @@ p {
   }
 }
 
-@media (max-width: 980px) {
+@media (max-width: 1200px) {
   .nav__toggle {
     display: flex;
   }
@@ -1409,7 +1410,9 @@ p {
   .nav__toggle.is-open .nav__toggle-bar:nth-child(3) {
     transform: translateY(-0.52rem) rotate(-45deg);
   }
+}
 
+@media (max-width: 980px) {
   .hero__scroll {
     display: none;
   }
@@ -1896,4 +1899,48 @@ p {
     --ty: 0px;
     --s: 1;
   }
+}
+
+/* ============================================================
+   Clientes y socios
+   ============================================================ */
+
+.partners {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+
+.partners__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+}
+
+.partners__logo {
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border: 1px solid var(--ink-line);
+}
+
+.partners__logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.partners__name {
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-text);
 }
