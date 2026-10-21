@@ -1081,8 +1081,18 @@ p {
 }
 
 .about--editorial .section__header {
-  gap: var(--space-3);
   margin-bottom: 0;
+}
+
+.about--editorial .section__kicker {
+  line-height: 1;
+}
+
+/* La foto baja el alto de "¿Quién es Williams?" para partir a la altura de Biografía */
+@media (min-width: 981px) {
+  .about--editorial .about__media {
+    margin-top: calc(0.75rem + var(--space-8) + 1px + var(--space-6) + var(--space-3));
+  }
 }
 
 .about--editorial .section__title {
