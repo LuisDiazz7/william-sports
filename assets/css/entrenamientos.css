@@ -230,3 +230,7 @@
 .polaroid__media--square {
   aspect-ratio: 1;
 }
+
+.entren-actions--videos {
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+}
