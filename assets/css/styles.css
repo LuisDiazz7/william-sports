@@ -372,9 +372,9 @@ p {
 
 .hero__title {
   font-weight: 800;
-  font-size: clamp(2.4rem, 6.6vw, 5.6rem);
+  font-size: clamp(1.8rem, 4.2vw, 3.4rem);
   text-transform: uppercase;
-  line-height: 0.98;
+  line-height: 1.05;
   letter-spacing: -0.03em;
 }
 
