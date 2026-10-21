@@ -97,10 +97,10 @@
 }
 
 .tema__text {
-  font-family: var(--font-serif);
-  font-size: 1.05rem;
-  line-height: 1.6;
-  color: var(--ink-muted);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--color-muted);
   margin: 0;
 }
 
@@ -134,4 +134,12 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: var(--space-4);
+}
+
+/* Subtítulos con la misma letra que los textos de Historia (.about__text) */
+#entrenamientos .work__subtitle {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--color-muted);
 }

@@ -1973,6 +1973,13 @@ p {
   color: var(--ink-text);
 }
 
+/* Misma letra que los textos de Historia (.about__text) */
+.service-row__text--sans {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: var(--color-muted);
+}
+
 .service-row__text--justify {
   text-align: justify;
   hyphens: auto;
