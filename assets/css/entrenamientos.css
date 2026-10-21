@@ -91,7 +91,9 @@
 }
 
 /* Sin el título de la página, el primer bloque no debe quedar bajo el menú fijo */
-#entrenamientos {
+#entrenamientos,
+#cursos,
+#scouting {
   padding-top: calc(var(--header-h) + clamp(2rem, 5vw, 4rem));
 }
 
@@ -220,7 +222,9 @@
 }
 
 /* Subtítulos con la misma letra que los textos de Historia (.about__text) */
-#entrenamientos .work__subtitle {
+#entrenamientos .work__subtitle,
+#cursos .work__subtitle,
+#scouting .work__subtitle {
   font-family: var(--font-sans);
   font-size: 1rem;
   line-height: 1.65;
@@ -233,4 +237,31 @@
 
 .entren-actions--videos {
   margin-top: clamp(2.5rem, 5vw, 4rem);
+}
+
+/* Cursos y Scouting reutilizan esta estructura */
+.temas--3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media (max-width: 720px) {
+  .temas--3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.polaroid__media--vertical {
+  aspect-ratio: 9 / 16;
+}
+
+/* Las fotos y videos verticales usan un marco más angosto */
+.video-card .polaroid:has(.polaroid__media--vertical) {
+  max-width: 320px;
+}
+
+.polaroid__media--vertical video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }

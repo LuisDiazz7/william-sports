@@ -260,13 +260,13 @@
           <a href="index.html" class="nav__link">Inicio</a>
         </li>
         <li class="nav__item">
-          <a href="sobre-mi.html" class="nav__link">Historia</a>
+          <a href="entrenamientos.html" class="nav__link">Personalizados Fútbol</a>
         </li>
         <li class="nav__item">
           <a href="cursos.html" class="nav__link is-active">Cursos Entrenadores</a>
         </li>
         <li class="nav__item">
-          <a href="entrenamientos.html" class="nav__link">Personalizados Fútbol</a>
+          <a href="sobre-mi.html" class="nav__link">Historia</a>
         </li>
         <li class="nav__item">
           <a href="scouting.html" class="nav__link">Scouting</a>
@@ -454,7 +454,8 @@
 <script src="assets/js/main.js"></script>
 <script>
 (function () {
-  // Pega aquí el link de pago de Webpay cuando lo tengas. Mientras esté vacío, los botones muestran un aviso.
+  // Pega aquí el link de pago de Webpay (entre las comillas) cuando Transbank te lo entregue.
+  // Mientras esté vacío, los botones "Pagar con Webpay" muestran un aviso.
   var WEBPAY_URL = "";
 
   var toast = document.getElementById('toast'), toastTimer;
@@ -466,7 +467,7 @@
     if (WEBPAY_URL) { a.href = WEBPAY_URL; a.target = '_blank'; a.rel = 'noopener'; return; }
     a.addEventListener('click', function (e) {
       e.preventDefault();
-      showToast('El link de pago de Webpay se conecta más adelante.');
+      showToast('El pago con Webpay estará disponible pronto. Escríbenos por WhatsApp para inscribirte.');
     });
   });
 

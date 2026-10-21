@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
-    content="Cursos, clínicas, talleres y jornadas para entrenadores de fútbol, en convenio con el Colegio de Entrenadores de Chile y el Instituto Nacional del Fútbol.">
+    content="Cursos, clínicas, talleres y jornadas para entrenadores de fútbol, en convenio con el Colegio de Entrenadores de Fútbol de Chile y el Instituto Nacional del Fútbol.">
   <title>Cursos Entrenadores | William Olave</title>
 
   <!-- Fuentes -->
@@ -17,6 +17,7 @@
 
   <!-- CSS -->
   <link rel="stylesheet" href="assets/css/styles.css?v=18">
+  <link rel="stylesheet" href="assets/css/entrenamientos.css?v=9">
 </head>
 
 <body>
@@ -40,13 +41,13 @@
             <a href="index.html" class="nav__link">Inicio</a>
           </li>
           <li class="nav__item">
-            <a href="sobre-mi.html" class="nav__link">Historia</a>
+            <a href="entrenamientos.html" class="nav__link">Personalizados Fútbol</a>
           </li>
           <li class="nav__item">
             <a href="cursos.html" class="nav__link is-active">Cursos Entrenadores</a>
           </li>
           <li class="nav__item">
-            <a href="entrenamientos.html" class="nav__link">Personalizados Fútbol</a>
+            <a href="sobre-mi.html" class="nav__link">Historia</a>
           </li>
           <li class="nav__item">
             <a href="scouting.html" class="nav__link">Scouting</a>
@@ -66,59 +67,102 @@
     <!-- Cursos entrenadores -->
     <section id="cursos" class="work">
       <div class="container">
-        <header class="work__header" data-reveal>
-          <span class="work__eyebrow">CURSOS ENTRENADORES</span>
-          <h1 class="work__title">Contextualización </h1>
-        </header>
-
-        <div class="work__rows">
-          <article class="service-row" data-reveal>
+        <div class="entren-block entren-block--first">
+          <article class="service-row sedes-row" data-reveal>
             <div class="service-row__media">
-              <figure class="polaroid" style="--r:2deg" data-polaroid>
-                <div class="polaroid__media polaroid__media--landscape">
+              <figure class="polaroid" style="--r:-2deg" data-polaroid>
+                <div class="polaroid__media polaroid__media--square">
                   <img src="assets/images/williams_certificado.webp"
-                    alt="Certificado de curso de William Olave" loading="lazy" decoding="async">
+                    alt="Afiche de una clínica de William Olave con certificado" loading="lazy" decoding="async">
                 </div>
                 <figcaption class="polaroid__caption">Certificaciones</figcaption>
                 <span class="polaroid__glare" aria-hidden="true"></span>
               </figure>
             </div>
             <div class="service-row__body">
-              <p class="service-row__text service-row__text--sans service-row__text--justify">
-                Los cursos, clínicas, talleres y jornadas nacen de una idea que Williams tiene clara: el fútbol es
-                como los estudios. Si tenemos buenos docentes o profesores, los alumnos aprenden y se desarrollan.
+              <h2 class="service-row__title">Contextualización</h2>
+              <p class="work__subtitle sedes-row__text">
+                Los cursos, clínicas, talleres y jornadas nacen de una idea que Williams tiene clara: el fútbol es como los estudios. Si tenemos buenos docentes o profesores, los alumnos aprenden y se desarrollan.
               </p>
-              <p class="service-row__text service-row__text--sans service-row__text--justify">
-                Por eso genera convenios con el Colegio de Entrenadores de Fútbol de Chile y el Instituto Nacional
-                del Fútbol, creando eventos relevantes para cambiar la forma de hacer las cosas e insertar el
-                conocimiento en las personas.
+              <p class="work__subtitle sedes-row__text">
+                Por eso genera convenios con el Colegio de Entrenadores de Fútbol de Chile y el Instituto Nacional del Fútbol, creando eventos relevantes para cambiar la forma de hacer las cosas e insertar el conocimiento en las personas.
               </p>
-            </div>
-          </article>
-
-          <article class="service-row service-row--reverse" data-reveal>
-            <div class="service-row__media">
-              <figure class="polaroid" style="--r:-3deg" data-polaroid>
-                <div class="polaroid__media polaroid__media--landscape">
-                  <img src="assets/images/monitoreo.jpeg" alt="Afiche de la Clínica Certificado Monitor de Fútbol"
-                    loading="lazy" decoding="async">
-                </div>
-                <figcaption class="polaroid__caption">Clínica Monitor de Fútbol</figcaption>
-                <span class="polaroid__glare" aria-hidden="true"></span>
-              </figure>
-            </div>
-            <div class="service-row__body">
-              <h2 class="service-row__title">Actualidad</h2>
-              <p class="service-row__text service-row__text--sans">
-                Revisa los cursos y clínicas que tienen inscripciones abiertas.
-              </p>
-              <a href="curso.html" class="service-link">
-                Ver cursos vigentes
-                <span class="service-link__arrow" aria-hidden="true">→</span>
+              <ul class="sedes">
+                <li class="sede"><svg class="sede__pin" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="m8 12.5 2.6 2.6L16 9.7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Colegio de Entrenadores de Fútbol de Chile</span></li>
+                <li class="sede"><svg class="sede__pin" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="m8 12.5 2.6 2.6L16 9.7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Instituto Nacional del Fútbol</span></li>
+              </ul>
+              <a href="https://wa.me/56984267737?text=Hola%2C%20quiero%20consultar%20por%20cursos%20para%20entrenadores"
+                class="btn btn--whatsapp" target="_blank" rel="noopener noreferrer"
+                aria-label="Abrir conversación de WhatsApp con William">
+                <img src="assets/svg/whatsapp.svg" alt="" aria-hidden="true" class="btn__icon">
+                <span>Contactar por WhatsApp</span>
               </a>
             </div>
           </article>
         </div>
+
+        <div class="entren-block">
+          <div class="work__header" data-reveal>
+            <h2 class="service-row__title">Actualidad</h2>
+            <p class="work__subtitle">
+              Revisa los cursos y clínicas que tienen inscripciones abiertas.
+            </p>
+          </div>
+          <div class="videos-grid">
+            <div class="video-card" data-reveal>
+              <figure class="polaroid" style="--r:2deg" data-polaroid>
+                <div class="polaroid__media polaroid__media--square">
+                  <img src="assets/images/monitoreo.jpeg" alt="Afiche de la Clínica Certificado Monitor de Fútbol" loading="lazy" decoding="async">
+                </div>
+                <figcaption class="polaroid__caption">Clínica Certificado Monitor de Fútbol</figcaption>
+                <span class="polaroid__glare" aria-hidden="true"></span>
+              </figure>
+              <p class="video-card__desc">Viernes 13 de noviembre de 2026 · Sport Park Malloco.</p>
+            </div>
+          </div>
+          <div class="entren-actions entren-actions--videos" data-reveal>
+            <a href="curso.html" class="btn btn--primary">
+              <span>Ver cursos vigentes</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="entren-block">
+          <div class="work__header" data-reveal>
+            <h2 class="service-row__title">Formatos</h2>
+            <p class="work__subtitle">
+              Distintas instancias para seguir aprendiendo y compartir conocimiento.
+            </p>
+          </div>
+          <div class="temas">
+            <article class="tema" data-reveal>
+              <span class="tema__num">01</span>
+              <h3 class="tema__title">Cursos</h3>
+              <p class="tema__text">Formación para entrenadores con certificación.</p>
+            </article>
+            <article class="tema" data-reveal>
+              <span class="tema__num">02</span>
+              <h3 class="tema__title">Clínicas</h3>
+              <p class="tema__text">Jornadas de teoría y práctica en cancha.</p>
+            </article>
+            <article class="tema" data-reveal>
+              <span class="tema__num">03</span>
+              <h3 class="tema__title">Talleres</h3>
+              <p class="tema__text">Trabajo aplicado sobre temas específicos del juego.</p>
+            </article>
+            <article class="tema" data-reveal>
+              <span class="tema__num">04</span>
+              <h3 class="tema__title">Jornadas</h3>
+              <p class="tema__text">Encuentros para compartir experiencias y metodologías.</p>
+            </article>
+            <article class="tema" data-reveal>
+              <span class="tema__num">05</span>
+              <h3 class="tema__title">Charlas</h3>
+              <p class="tema__text">Exposiciones sobre formación, scouting y desarrollo del futbolista.</p>
+            </article>
+          </div>
+        </div>
+
       </div>
     </section>
   </main>
@@ -127,16 +171,16 @@
   <footer class="footer">
     <div class="container">
       <div class="footer__top">
-        <a href="index.html" class="footer__logo">WILLIAMS</a>
+        <a href="index.html" class="footer__logo">WILLIAM</a>
         <p class="footer__phrase">EL FÚTBOL SE OBSERVA, SE ENSEÑA Y SE DESARROLLA</p>
       </div>
 
       <nav class="footer__nav" aria-label="Navegación del pie de página">
         <ul class="footer__list">
           <li class="footer__item"><a href="index.html" class="footer__link">Inicio</a></li>
-          <li class="footer__item"><a href="sobre-mi.html" class="footer__link">Historia</a></li>
-          <li class="footer__item"><a href="cursos.html" class="footer__link">Cursos Entrenadores</a></li>
           <li class="footer__item"><a href="entrenamientos.html" class="footer__link">Personalizados Fútbol</a></li>
+          <li class="footer__item"><a href="cursos.html" class="footer__link">Cursos Entrenadores</a></li>
+          <li class="footer__item"><a href="sobre-mi.html" class="footer__link">Historia</a></li>
           <li class="footer__item"><a href="scouting.html" class="footer__link">Scouting</a></li>
           <li class="footer__item"><a href="clientes.html" class="footer__link">Clientes y Socios</a></li>
           <li class="footer__item"><a href="galeria.html" class="footer__link">Galería Imágenes</a></li>
@@ -145,14 +189,14 @@
       </nav>
 
       <div class="footer__bottom">
-        <p class="footer__copy">© <span id="year"></span> Williams Olave. Todos los derechos reservados.</p>
+        <p class="footer__copy">© <span id="year"></span> William Olave. Todos los derechos reservados.</p>
       </div>
     </div>
   </footer>
 
   <!-- Botones flotantes de contacto -->
   <div class="social-float">
-    <a href="https://wa.me/56984267737?text=Hola%20William%2C%20vengo%20de%20tu%20p%C3%A1gina%20web%20y%20me%20gustar%C3%ADa%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20tus%20servicios."
+    <a href="https://wa.me/56984267737?text=Hola%2C%20quiero%20consultar%20por%20entrenamientos%20personalizados"
       class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Abrir WhatsApp con William">
       <img src="assets/svg/whatsapp.svg" alt="" aria-hidden="true" class="wa-float__icon">
       <span class="wa-float__pulse"></span>
@@ -161,20 +205,6 @@
       aria-label="Abrir perfil de Instagram de William">
       <img src="assets/svg/instagram.svg" alt="" aria-hidden="true" class="ig-float__icon">
     </a>
-  </div>
-
-  <!-- Lightbox Galería -->
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Vista ampliada de fotografía">
-    <div class="lightbox__backdrop" data-lightbox-close></div>
-    <button class="lightbox__close" id="lightbox-close" aria-label="Cerrar vista ampliada">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-          stroke-linejoin="round" />
-      </svg>
-    </button>
-    <div class="lightbox__content">
-      <img src="" alt="" class="lightbox__img" id="lightbox-img" loading="lazy" decoding="async">
-    </div>
   </div>
 
   <!-- JS -->
