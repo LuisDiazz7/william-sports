@@ -777,6 +777,8 @@ p {
   color: var(--color-muted);
   max-width: 60ch;
   line-height: 1.65;
+  text-align: justify;
+  hyphens: auto;
 }
 
 .about__disclaimer {
