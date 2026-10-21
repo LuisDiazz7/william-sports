@@ -1972,3 +1972,8 @@ p {
   text-transform: uppercase;
   color: var(--ink-text);
 }
+
+.service-row__text--justify {
+  text-align: justify;
+  hyphens: auto;
+}
