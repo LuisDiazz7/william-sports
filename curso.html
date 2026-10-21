@@ -225,6 +225,18 @@
     .btn { white-space: normal; text-align: center; }
   }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .btn, .flyer img { transition: none; } }
+  /* ---------- botones flotantes de WhatsApp e Instagram (izquierda, como en el resto del sitio) ---------- */
+  .social-float { position: fixed; left: max(20px, env(safe-area-inset-left, 0px)); top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 12px; z-index: 45; }
+  .wa-float, .ig-float { position: relative; width: 4rem; height: 4rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.25), 0 30px 60px -30px rgba(59, 130, 246, 0.45); transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1); }
+  .wa-float { background: var(--wa); }
+  .ig-float { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%); }
+  .wa-float:hover, .wa-float:focus-visible, .ig-float:hover, .ig-float:focus-visible { transform: translateY(-4px); }
+  .wa-float__icon, .ig-float__icon { width: 1.9rem; height: 1.9rem; }
+  .wa-float__icon { filter: brightness(0) invert(1); }
+  .wa-float__pulse { position: absolute; inset: 0; border-radius: 50%; border: 1px solid rgba(37, 211, 102, 0.8); animation: wa-pulse 2.8s cubic-bezier(0.22, 1, 0.36, 1) infinite; pointer-events: none; }
+  @keyframes wa-pulse { 0% { transform: scale(1); opacity: 0.6; } 70%, 100% { transform: scale(1.35); opacity: 0; } }
+  @media (max-width: 560px) { .social-float { left: max(16px, env(safe-area-inset-left, 0px)); } }
+  @media (prefers-reduced-motion: reduce) { .wa-float__pulse { animation: none; } }
 </style>
 </head>
 <body>
@@ -251,7 +263,7 @@
           <a href="sobre-mi.html" class="nav__link">Historia</a>
         </li>
         <li class="nav__item">
-          <a href="curso.html" class="nav__link is-active">Cursos Entrenadores</a>
+          <a href="cursos.html" class="nav__link is-active">Cursos Entrenadores</a>
         </li>
         <li class="nav__item">
           <a href="entrenamientos.html" class="nav__link">Personalizados Fútbol</a>
@@ -417,6 +429,19 @@
     </footer>
   </div>
 </main>
+
+<!-- Botones flotantes de contacto -->
+<div class="social-float">
+  <a href="https://wa.me/56984267737?text=Hola%20William%2C%20vengo%20de%20tu%20p%C3%A1gina%20web%20y%20me%20gustar%C3%ADa%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20tus%20servicios."
+    class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Abrir WhatsApp con William">
+    <img src="assets/svg/whatsapp.svg" alt="" aria-hidden="true" class="wa-float__icon">
+    <span class="wa-float__pulse"></span>
+  </a>
+  <a href="https://www.instagram.com/williamssport.oficial" class="ig-float" target="_blank" rel="noopener noreferrer"
+    aria-label="Abrir perfil de Instagram de William">
+    <img src="assets/svg/instagram.svg" alt="" aria-hidden="true" class="ig-float__icon">
+  </a>
+</div>
 
 <div class="lightbox" id="lightbox" hidden>
   <figure role="dialog" aria-modal="true" aria-label="Imagen ampliada">
