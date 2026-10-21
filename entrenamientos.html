@@ -17,7 +17,7 @@
 
   <!-- CSS -->
   <link rel="stylesheet" href="assets/css/styles.css?v=18">
-  <link rel="stylesheet" href="assets/css/entrenamientos.css?v=5">
+  <link rel="stylesheet" href="assets/css/entrenamientos.css?v=6">
 </head>
 
 <body>
@@ -227,7 +227,7 @@
   <script>
     const VIDEOS = [
       {
-        titulo: 'Trabajo técnico con conos',
+        titulo: 'Trabajo técnico con arqueros',
         descripcion: 'Ejercicios de coordinación, desplazamiento y técnica individual.',
         youtube: '',
         archivo: 'assets/videos/personalizado-1.mp4'
@@ -274,8 +274,12 @@
           media.appendChild(iframe);
         } else if (video.archivo) {
           const videoEl = document.createElement('video');
-          // Se reproducen solos: el navegador solo lo permite si están en silencio
-          videoEl.controls = true;
+          // Se reproducen solos, en silencio y sin controles (no se pueden pausar ni activar el sonido)
+          videoEl.controls = false;
+          videoEl.disablePictureInPicture = true;
+          videoEl.setAttribute('controlslist', 'nodownload nofullscreen noremoteplayback');
+          videoEl.addEventListener('pause', () => videoEl.play().catch(() => {}));
+          videoEl.addEventListener('contextmenu', (e) => e.preventDefault());
           videoEl.autoplay = true;
           videoEl.muted = true;
           videoEl.loop = true;

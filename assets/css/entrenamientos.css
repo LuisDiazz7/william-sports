@@ -33,11 +33,22 @@
   margin-inline: auto;
 }
 
+.video-card .polaroid__caption {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* Los videos no se pueden pausar ni activar el sonido: no reciben clics */
+.polaroid__media--video video {
+  pointer-events: none;
+}
+
 .video-card__desc {
-  font-family: var(--font-serif);
-  font-size: 1.05rem;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
   line-height: 1.6;
-  color: var(--ink-muted);
+  color: var(--color-muted);
   text-align: center;
   max-width: 40ch;
   margin: 0 auto;
