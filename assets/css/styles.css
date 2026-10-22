@@ -181,6 +181,7 @@ p {
 }
 
 .nav__logo {
+  flex: none;
   display: inline-flex;
   align-items: center;
   gap: var(--space-3);
@@ -209,7 +210,7 @@ p {
 
 .nav__list {
   display: flex;
-  gap: clamp(var(--space-4), 3vw, var(--space-7));
+  gap: clamp(var(--space-4), 1.6vw, var(--space-6));
 }
 
 .nav__item {
@@ -218,7 +219,7 @@ p {
 
 .nav__link {
   position: relative;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   white-space: nowrap;
   font-weight: 500;
   color: var(--color-cream-soft);
@@ -1380,7 +1381,8 @@ p {
   }
 }
 
-@media (max-width: 1200px) {
+/* Con 8 enlaces el menú completo ya no cabe bajo 1300px: pasa al botón de menú */
+@media (max-width: 1300px) {
   .nav__toggle {
     display: flex;
   }
@@ -1993,4 +1995,79 @@ p {
   grid-column: 1 / -1;
   line-height: 1;
   margin-bottom: clamp(1.75rem, 4vw, 2.75rem);
+}
+
+/* ============================================================
+   Auspiciadores · espacios disponibles mientras llegan los logos
+   ============================================================ */
+
+.sponsor__slot {
+  position: relative;
+  display: grid;
+  place-items: center;
+  border: 1px dashed rgba(59, 130, 246, 0.45);
+  border-radius: 6px;
+  background:
+    radial-gradient(70% 70% at 50% 30%, rgba(59, 130, 246, 0.14), transparent 70%),
+    #121b27;
+  transition: transform 0.4s var(--ease-out), border-color 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out);
+}
+
+/* Brillo que cruza el cuadro */
+.sponsor__slot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 30%, rgba(242, 244, 239, 0.08) 50%, transparent 70%);
+  transform: translateX(-100%);
+  animation: sponsor-shine 3.2s ease-in-out infinite;
+}
+
+.sponsor:nth-child(2) .sponsor__slot::after { animation-delay: 0.4s; }
+.sponsor:nth-child(3) .sponsor__slot::after { animation-delay: 0.8s; }
+.sponsor:nth-child(4) .sponsor__slot::after { animation-delay: 1.2s; }
+
+@keyframes sponsor-shine {
+  60%, 100% { transform: translateX(100%); }
+}
+
+.sponsor:hover .sponsor__slot {
+  transform: translateY(-6px);
+  border-color: var(--ink-accent);
+  box-shadow: 0 24px 50px -24px var(--color-accent-glow);
+}
+
+.sponsor__soon {
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--ink-accent);
+}
+
+.sponsor__name {
+  color: var(--color-muted);
+}
+
+.sponsor-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-5);
+  margin-top: clamp(3rem, 7vw, 5rem);
+  text-align: center;
+}
+
+.sponsor-cta__text {
+  font-family: var(--font-hero);
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  line-height: 1;
+  color: var(--ink-text);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sponsor__slot::after {
+    animation: none;
+  }
 }
