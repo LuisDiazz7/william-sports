@@ -18,6 +18,7 @@
   <!-- CSS -->
   <link rel="stylesheet" href="assets/css/styles.css?v=18">
   <link rel="stylesheet" href="assets/css/entrenamientos.css?v=9">
+  <link rel="stylesheet" href="assets/css/scouting.css?v=1">
 </head>
 
 <body>
@@ -47,10 +48,10 @@
             <a href="cursos.html" class="nav__link">Cursos Entrenadores</a>
           </li>
           <li class="nav__item">
-            <a href="sobre-mi.html" class="nav__link">Historia</a>
+            <a href="scouting.html" class="nav__link is-active">Scouting</a>
           </li>
           <li class="nav__item">
-            <a href="scouting.html" class="nav__link is-active">Scouting</a>
+            <a href="sobre-mi.html" class="nav__link">Historia</a>
           </li>
           <li class="nav__item">
             <a href="clientes.html" class="nav__link">Clientes y Socios</a>
@@ -80,6 +81,7 @@
               </figure>
             </div>
             <div class="service-row__body">
+              <span class="scout-eyebrow">Scouting</span>
               <h2 class="service-row__title">Jefe de Scouting de Palestino</h2>
               <p class="work__subtitle sedes-row__text">
                 Esta área se enfoca en observar jugadores, analizar sus características y reconocer su potencial futbolístico.
@@ -101,8 +103,49 @@
           </article>
         </div>
 
+        <!-- Visor: video de observación en estadio -->
+        <div class="entren-block">
+          <div class="scout-lens" data-reveal>
+            <video src="assets/videos/video1.mp4" autoplay muted loop playsinline preload="auto" disablepictureinpicture disableremoteplayback controlslist="nodownload nofullscreen noremoteplayback" onpause="this.play()" onvolumechange="this.muted=true" oncontextmenu="return false" aria-label="Video de observación en estadio"></video>
+            <span class="scout-lens__scan" aria-hidden="true"></span>
+            <span class="scout-lens__reticle" aria-hidden="true"></span>
+            <span class="scout-lens__corner scout-lens__corner--tl" aria-hidden="true"></span>
+            <span class="scout-lens__corner scout-lens__corner--tr" aria-hidden="true"></span>
+            <span class="scout-lens__corner scout-lens__corner--bl" aria-hidden="true"></span>
+            <span class="scout-lens__corner scout-lens__corner--br" aria-hidden="true"></span>
+            <span class="scout-lens__rec" aria-hidden="true">REC</span>
+            <span class="scout-lens__tag" aria-hidden="true">SCOUTING</span>
+            <p class="scout-lens__caption">
+              <span class="scout-lens__title">Observación en estadio</span>
+              <span class="scout-lens__sub">Cada partido es una oportunidad para descubrir talento.</span>
+            </p>
+          </div>
+
+          <div class="scout-marquee" aria-hidden="true">
+            <div class="scout-marquee__track">
+              <ul class="scout-marquee__group">
+                <li class="scout-marquee__item">Técnica</li>
+                <li class="scout-marquee__item">Táctica</li>
+                <li class="scout-marquee__item">Toma de decisiones</li>
+                <li class="scout-marquee__item">Físico</li>
+                <li class="scout-marquee__item">Fortaleza mental</li>
+                <li class="scout-marquee__item">Potencial</li>
+              </ul>
+              <ul class="scout-marquee__group">
+                <li class="scout-marquee__item">Técnica</li>
+                <li class="scout-marquee__item">Táctica</li>
+                <li class="scout-marquee__item">Toma de decisiones</li>
+                <li class="scout-marquee__item">Físico</li>
+                <li class="scout-marquee__item">Fortaleza mental</li>
+                <li class="scout-marquee__item">Potencial</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
         <div class="entren-block">
           <div class="work__header" data-reveal>
+            <span class="scout-eyebrow">En el club</span>
             <h2 class="service-row__title">Williams en Palestino</h2>
             <p class="work__subtitle">
               Su trabajo como jefe de Scouting del club.
@@ -112,7 +155,7 @@
             <div class="video-card" data-reveal>
               <figure class="polaroid" style="--r:2deg" data-polaroid>
                 <div class="polaroid__media polaroid__media--vertical">
-                  <video src="assets/videos/willie-project-1-vertical.mp4" autoplay muted loop playsinline preload="auto" controls aria-label="Entrevista en el estadio"></video>
+                  <video src="assets/videos/willie-project-1-vertical.mp4" autoplay muted loop playsinline preload="auto" disablepictureinpicture disableremoteplayback controlslist="nodownload nofullscreen noremoteplayback" onpause="this.play()" onvolumechange="this.muted=true" oncontextmenu="return false" style="pointer-events:none" aria-label="Entrevista en el estadio"></video>
                 </div>
                 <figcaption class="polaroid__caption">Entrevista en el estadio</figcaption>
                 <span class="polaroid__glare" aria-hidden="true"></span>
@@ -134,27 +177,44 @@
 
         <div class="entren-block">
           <div class="work__header" data-reveal>
+            <span class="scout-eyebrow">El método</span>
             <h2 class="service-row__title">Cómo trabajamos</h2>
             <p class="work__subtitle">
               Tres pasos para descubrir a un jugador.
             </p>
           </div>
-          <div class="temas temas--3">
-            <article class="tema" data-reveal>
+          <div class="temas temas--3 scout-steps" data-reveal>
+            <article class="tema" data-reveal data-num="01">
+              <span class="tema__icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/></svg></span>
               <span class="tema__num">01</span>
               <h3 class="tema__title">Observar</h3>
               <p class="tema__text">Ver jugar al futbolista en partidos y entrenamientos.</p>
             </article>
-            <article class="tema" data-reveal>
+            <article class="tema" data-reveal data-num="02">
+              <span class="tema__icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
               <span class="tema__num">02</span>
               <h3 class="tema__title">Analizar</h3>
               <p class="tema__text">Estudiar sus características técnicas, tácticas, físicas y mentales.</p>
             </article>
-            <article class="tema" data-reveal>
+            <article class="tema" data-reveal data-num="03">
+              <span class="tema__icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L12 3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span>
               <span class="tema__num">03</span>
               <h3 class="tema__title">Reconocer el potencial</h3>
               <p class="tema__text">Identificar hasta dónde puede llegar y qué necesita para crecer.</p>
             </article>
+          </div>
+        </div>
+
+        <div class="entren-block">
+          <div class="scout-cta" data-reveal>
+            <h2 class="scout-cta__title">¿Tienes un jugador para mostrar?</h2>
+            <p class="scout-cta__text">Escríbele a William y cuéntale sobre el futbolista que quieres que observe.</p>
+            <a href="https://wa.me/56984267737?text=Hola%2C%20quiero%20consultar%20por%20scouting"
+              class="btn btn--whatsapp" target="_blank" rel="noopener noreferrer"
+              aria-label="Abrir conversación de WhatsApp con William">
+              <img src="assets/svg/whatsapp.svg" alt="" aria-hidden="true" class="btn__icon">
+              <span>Contactar por WhatsApp</span>
+            </a>
           </div>
         </div>
 
@@ -175,8 +235,8 @@
           <li class="footer__item"><a href="index.html" class="footer__link">Inicio</a></li>
           <li class="footer__item"><a href="entrenamientos.html" class="footer__link">Personalizados Fútbol</a></li>
           <li class="footer__item"><a href="cursos.html" class="footer__link">Cursos Entrenadores</a></li>
-          <li class="footer__item"><a href="sobre-mi.html" class="footer__link">Historia</a></li>
           <li class="footer__item"><a href="scouting.html" class="footer__link">Scouting</a></li>
+          <li class="footer__item"><a href="sobre-mi.html" class="footer__link">Historia</a></li>
           <li class="footer__item"><a href="clientes.html" class="footer__link">Clientes y Socios</a></li>
           <li class="footer__item"><a href="galeria.html" class="footer__link">Galería Imágenes</a></li>
           <li class="footer__item"><a href="contacto.html" class="footer__link">Contacto</a></li>
