@@ -254,3 +254,70 @@ if (!isCoarsePointer && !prefersReducedMotion) {
     });
   });
 }
+
+/* ------------------------------------------------------------
+   Tarjetas "Qué trabajamos": giro y luz que siguen al cursor,
+   y un recorrido automático que va encendiendo una a una
+   ------------------------------------------------------------ */
+const CARD_TILT = 8; // grados
+const temasGroups = document.querySelectorAll('[data-temas]');
+
+temasGroups.forEach((group) => {
+  const cards = Array.from(group.querySelectorAll('[data-tilt]'));
+  if (!cards.length) return;
+
+  // Cuando termina la entrada escalonada, las tarjetas responden sin retraso
+  setTimeout(() => group.classList.add('is-ready'), 1500);
+
+  if (!prefersReducedMotion) {
+    cards.forEach((card) => {
+      card.addEventListener('pointermove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const px = (e.clientX - rect.left) / rect.width;
+        const py = (e.clientY - rect.top) / rect.height;
+
+        card.classList.add('is-active');
+        card.style.setProperty('--mx', (px * 100).toFixed(1) + '%');
+        card.style.setProperty('--my', (py * 100).toFixed(1) + '%');
+        if (e.pointerType !== 'touch') {
+          card.style.setProperty('--ry', ((px - 0.5) * 2 * CARD_TILT).toFixed(2) + 'deg');
+          card.style.setProperty('--rx', ((0.5 - py) * 2 * CARD_TILT).toFixed(2) + 'deg');
+        }
+      });
+
+      card.addEventListener('pointerleave', () => {
+        card.classList.remove('is-active');
+        ['--rx', '--ry', '--mx', '--my'].forEach((v) => card.style.removeProperty(v));
+      });
+    });
+  }
+
+  // Recorrido automático: se detiene mientras el usuario interactúa
+  if (prefersReducedMotion) return;
+
+  let index = -1;
+  let paused = false;
+  let visible = false;
+
+  const step = () => {
+    cards.forEach((c) => c.classList.remove('is-lit'));
+    if (paused || !visible) return;
+    index = (index + 1) % cards.length;
+    cards[index].classList.add('is-lit');
+  };
+
+  setInterval(step, 2200);
+
+  group.addEventListener('pointerenter', () => { paused = true; step(); });
+  group.addEventListener('pointerleave', () => { paused = false; });
+  group.addEventListener('focusin', () => { paused = true; step(); });
+  group.addEventListener('focusout', () => { paused = false; });
+
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver((entries) => {
+      visible = entries[0].isIntersecting;
+    }, { threshold: 0.3 }).observe(group);
+  } else {
+    visible = true;
+  }
+});

@@ -1984,3 +1984,13 @@ p {
   text-align: justify;
   hyphens: auto;
 }
+
+/* ============================================================
+   "William Sport · Fútbol" al inicio de cada página
+   ============================================================ */
+
+.page-kicker {
+  grid-column: 1 / -1;
+  line-height: 1;
+  margin-bottom: clamp(1.75rem, 4vw, 2.75rem);
+}

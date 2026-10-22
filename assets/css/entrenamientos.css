@@ -330,3 +330,129 @@
     animation: none;
   }
 }
+
+/* --- Qué trabajamos (Personalizados): tarjetas interactivas --- */
+
+.temas--interactive {
+  perspective: 1000px;
+}
+
+.temas--interactive .tema {
+  overflow: hidden;
+  cursor: default;
+  outline: none;
+  transform: translateY(40px) scale(0.96);
+  transition:
+    opacity var(--dur-slow) var(--ease-out),
+    transform 0.7s var(--ease-out),
+    border-color 0.4s var(--ease-out),
+    box-shadow 0.4s var(--ease-out),
+    background-color 0.4s var(--ease-out);
+}
+
+.temas--interactive .tema:nth-child(2) { transition-delay: 0.08s; }
+.temas--interactive .tema:nth-child(3) { transition-delay: 0.16s; }
+.temas--interactive .tema:nth-child(4) { transition-delay: 0.24s; }
+.temas--interactive .tema:nth-child(5) { transition-delay: 0.32s; }
+
+/* Una vez visibles, sin retraso: responden al instante */
+.temas--interactive.is-ready .tema {
+  transition-delay: 0s;
+}
+
+.temas--interactive .tema.is-inview {
+  transform:
+    rotateX(var(--rx, 0deg))
+    rotateY(var(--ry, 0deg))
+    translateY(var(--lift, 0px));
+}
+
+/* Mientras sigue al cursor, el giro es más rápido */
+.temas--interactive .tema.is-active {
+  transition:
+    opacity var(--dur-slow) var(--ease-out),
+    transform 0.15s linear,
+    border-color 0.4s var(--ease-out),
+    box-shadow 0.4s var(--ease-out),
+    background-color 0.4s var(--ease-out);
+}
+
+/* Luz que sigue al cursor */
+.temas--interactive .tema::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(14rem circle at var(--mx, 50%) var(--my, 0%), rgba(59, 130, 246, 0.28), transparent 65%);
+  opacity: 0;
+  transition: opacity 0.4s var(--ease-out);
+  pointer-events: none;
+}
+
+/* Número grande de fondo */
+.temas--interactive .tema::after {
+  content: attr(data-num);
+  position: absolute;
+  right: -0.2rem;
+  bottom: -1.4rem;
+  font-family: var(--font-hero);
+  font-size: clamp(5.5rem, 8vw, 7.5rem);
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(59, 130, 246, 0.2);
+  pointer-events: none;
+  transition: transform 0.5s var(--ease-out), -webkit-text-stroke-color 0.5s var(--ease-out);
+}
+
+.temas--interactive .tema > * {
+  position: relative;
+  z-index: 1;
+}
+
+.temas--interactive .tema__icon {
+  width: 2.75rem;
+  height: 2.75rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(59, 130, 246, 0.12);
+  color: var(--ink-accent);
+  transition: transform 0.5s var(--ease-out), background-color 0.4s var(--ease-out), color 0.4s var(--ease-out);
+}
+
+/* Estado encendido: al pasar el mouse, al enfocar o en el recorrido automático */
+.temas--interactive .tema:hover,
+.temas--interactive .tema:focus-visible,
+.temas--interactive .tema.is-lit {
+  --lift: -8px;
+  border-color: var(--ink-accent);
+  background-color: #1d2633;
+  box-shadow: 0 24px 50px -24px var(--color-accent-glow), 0 0 0 1px rgba(59, 130, 246, 0.25);
+}
+
+.temas--interactive .tema:hover::before,
+.temas--interactive .tema:focus-visible::before,
+.temas--interactive .tema.is-lit::before {
+  opacity: 1;
+}
+
+.temas--interactive .tema:hover::after,
+.temas--interactive .tema:focus-visible::after,
+.temas--interactive .tema.is-lit::after {
+  transform: translate(-6px, -8px);
+  -webkit-text-stroke-color: rgba(59, 130, 246, 0.55);
+}
+
+.temas--interactive .tema:hover .tema__icon,
+.temas--interactive .tema:focus-visible .tema__icon,
+.temas--interactive .tema.is-lit .tema__icon {
+  transform: scale(1.12) rotate(-10deg);
+  background: var(--ink-accent);
+  color: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .temas--interactive .tema,
+  .temas--interactive .tema.is-inview {
+    transform: none;
+  }
+}
