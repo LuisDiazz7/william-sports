@@ -456,3 +456,8 @@
     transform: none;
   }
 }
+
+/* En Cursos la cinta va entre el título y las tarjetas */
+.scout-marquee--cursos {
+  margin: 0 0 clamp(2.5rem, 5vw, 3.5rem);
+}
