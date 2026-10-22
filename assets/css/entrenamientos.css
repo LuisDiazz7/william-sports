@@ -495,3 +495,44 @@
   transform: scale(1.08) rotate(-4deg);
   box-shadow: 0 10px 24px -10px var(--color-accent-glow);
 }
+
+/* --- Cursos: WhatsApp y "Ver cursos vigentes" lado a lado --- */
+
+.cursos-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+/* Botón amarillo para que destaque sobre el azul del sitio */
+.btn--vigentes {
+  position: relative;
+  background: #facc15;
+  color: #1a1400;
+  font-weight: 700;
+  box-shadow: 0 0 0 1px rgba(250, 204, 21, 0.4),
+    0 30px 60px -30px rgba(250, 204, 21, 0.7);
+  animation: vigentes-pulse 2.4s ease-out infinite;
+}
+
+.btn--vigentes:hover,
+.btn--vigentes:focus-visible {
+  transform: translateY(-3px);
+  background: #fde047;
+}
+
+@keyframes vigentes-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(250, 204, 21, 0.55), 0 30px 60px -30px rgba(250, 204, 21, 0.7); }
+  70%, 100% { box-shadow: 0 0 0 14px rgba(250, 204, 21, 0), 0 30px 60px -30px rgba(250, 204, 21, 0.7); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn--vigentes {
+    animation: none;
+  }
+}
+
+/* El logo del INAF trae mucho margen blanco: se acerca para que se lea mejor */
+.sede__logo-img--zoom {
+  transform: scale(1.3);
+}
