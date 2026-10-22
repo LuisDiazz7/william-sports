@@ -82,6 +82,8 @@
 
 .scout-lens {
   position: relative;
+  max-width: 760px;
+  margin-inline: auto;
   aspect-ratio: 16 / 9;
   overflow: hidden;
   border-radius: 6px;
@@ -255,7 +257,7 @@
   display: block;
   font-family: var(--font-hero);
   font-weight: 400;
-  font-size: clamp(1.8rem, 5.5vw, 4rem);
+  font-size: clamp(1.8rem, 4.5vw, 3rem);
   line-height: 0.9;
   letter-spacing: 0.01em;
   color: var(--ink-text);
