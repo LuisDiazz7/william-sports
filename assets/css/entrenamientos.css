@@ -461,3 +461,37 @@
 .scout-marquee--cursos {
   margin: 0 0 clamp(2.5rem, 5vw, 3.5rem);
 }
+
+/* --- Cursos: instituciones con convenio, con su logo al lado --- */
+
+.sede--org {
+  gap: 1.1rem;
+  letter-spacing: 0.1em;
+  line-height: 1.3;
+}
+
+.sede__logo {
+  flex: none;
+  width: 4.75rem;
+  height: 4.75rem;
+  padding: 0.3rem;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 6px;
+  background: #fff;
+  border: 1px solid var(--ink-line);
+  transition: transform 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out);
+}
+
+.sede__logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.sede--org:hover .sede__logo {
+  transform: scale(1.08) rotate(-4deg);
+  box-shadow: 0 10px 24px -10px var(--color-accent-glow);
+}
