@@ -2196,63 +2196,227 @@ p {
 .interviews {
   display: flex;
   flex-direction: column;
-  max-width: 56rem;
+  gap: clamp(3.5rem, 9vw, 7rem);
+  max-width: 72rem;
   margin: 0 auto;
-  padding: 0;
-  list-style: none;
-  border-top: 1px solid var(--color-line);
 }
 
-.interviews__item {
-  display: flex;
+.interview {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
   align-items: center;
-  gap: clamp(1rem, 3vw, 2rem);
-  padding: clamp(1.25rem, 3vw, 1.75rem) 0;
-  border-bottom: 1px solid var(--color-line);
+  gap: clamp(1.5rem, 4vw, 4rem);
 }
 
-.interviews__num {
-  font-family: var(--font-hero);
-  font-size: clamp(2rem, 5vw, 3rem);
-  line-height: 1;
-  color: var(--ink-accent);
-  min-width: 2ch;
+/* Filas alternadas: el video cambia de lado */
+.interview:nth-child(even) {
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
 }
 
-.interviews__info {
-  flex: 1;
-  min-width: 0;
+.interview:nth-child(even) .interview__media {
+  order: 2;
 }
 
-.interviews__eyebrow {
-  display: block;
+.interview__media {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: #000;
+  border: 1px solid var(--ink-line);
+  box-shadow: 0 40px 80px -40px rgba(0, 0, 0, 0.9);
+  transition: transform var(--dur-base) var(--ease-out),
+    border-color var(--dur-base) var(--ease-out),
+    box-shadow var(--dur-base) var(--ease-out);
+}
+
+.interview__media:hover {
+  transform: translateY(-6px);
+  border-color: var(--ink-accent);
+  box-shadow: 0 40px 80px -36px var(--color-accent-glow);
+}
+
+.interview__thumb,
+.interview__media iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.interview__thumb {
+  z-index: 1;
+  object-fit: cover;
+  transition: opacity 0.8s var(--ease-out), transform var(--dur-slow) var(--ease-out);
+}
+
+.interview__media:hover .interview__thumb {
+  transform: scale(1.04);
+}
+
+/* El video de fondo se agranda un poco para esconder la barra de título de YouTube */
+.interview__media iframe {
+  pointer-events: none;
+  transform: scale(1.2);
+}
+
+.interview__media.is-playing .interview__thumb {
+  opacity: 0;
+}
+
+.interview__shade {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(180deg, rgba(4, 12, 23, 0) 45%, rgba(4, 12, 23, 0.75) 100%);
+  pointer-events: none;
+}
+
+.interview__badge {
+  position: absolute;
+  left: var(--space-4);
+  bottom: var(--space-4);
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(4, 12, 23, 0.7);
+  backdrop-filter: blur(6px);
   font-family: var(--font-label);
   font-weight: 600;
-  font-size: 0.8rem;
-  letter-spacing: 0.3em;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--color-muted);
+  color: var(--ink-text);
+  opacity: 0;
+  transition: opacity var(--dur-base) var(--ease-out);
 }
 
-.interviews__name {
+.interview__media.is-playing .interview__badge {
+  opacity: 1;
+}
+
+.interview__badge-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: #ff3b30;
+  animation: interview-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes interview-pulse {
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.interview__play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  width: clamp(3.5rem, 7vw, 5rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: rgba(242, 238, 228, 0.92);
+  color: #04101f;
+  box-shadow: 0 0 0 10px rgba(242, 238, 228, 0.12);
+  transform: translate(-50%, -50%);
+  transition: transform var(--dur-base) var(--ease-out), background var(--dur-base) var(--ease-out),
+    color var(--dur-base) var(--ease-out), opacity var(--dur-base) var(--ease-out);
+  pointer-events: none;
+}
+
+.interview__play svg {
+  width: 42%;
+  margin-left: 8%;
+}
+
+/* Mientras corre la vista previa el botón se achica para no tapar el video */
+.interview__media.is-playing .interview__play {
+  opacity: 0.85;
+  transform: translate(-50%, -50%) scale(0.8);
+}
+
+.interview__media:hover .interview__play {
+  opacity: 1;
+  background: var(--ink-accent);
+  color: #fff;
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+.interview__hit {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  border-radius: inherit;
+}
+
+.interview__num {
+  display: block;
+  font-family: var(--font-hero);
+  font-size: clamp(3.5rem, 7vw, 5.5rem);
+  line-height: 0.8;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--ink-accent);
+  margin-bottom: var(--space-5);
+}
+
+.interview__source {
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--ink-accent);
+  margin: 0 0 var(--space-3);
+}
+
+.interview__sep {
+  color: var(--ink-muted);
+}
+
+.interview__title {
   font-family: var(--font-hero);
   font-weight: 400;
-  font-size: clamp(1.5rem, 3.5vw, 2.2rem);
-  line-height: 1.05;
+  font-size: clamp(2rem, 3.6vw, 3rem);
+  line-height: 0.98;
   color: var(--ink-text);
+  margin: 0 0 var(--space-4);
+  text-wrap: balance;
 }
 
-.interviews__link {
-  flex-shrink: 0;
+.interview__text {
+  font-family: var(--font-serif);
+  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+  line-height: 1.55;
+  color: var(--ink-muted);
+  margin: 0 0 var(--space-7);
 }
 
-@media (max-width: 600px) {
-  .interviews__item {
-    flex-wrap: wrap;
+@media (max-width: 860px) {
+  .interview,
+  .interview:nth-child(even) {
+    grid-template-columns: 1fr;
   }
 
-  .interviews__link {
-    width: 100%;
-    justify-content: center;
+  .interview:nth-child(even) .interview__media {
+    order: 0;
+  }
+
+  .interview__num {
+    font-size: 3rem;
+    margin-bottom: var(--space-3);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .interview__badge-dot {
+    animation: none;
   }
 }
