@@ -1976,6 +1976,18 @@ p {
   object-fit: cover;
 }
 
+/* Logos de marca completos (no recortados) sobre fondo blanco */
+.partners__logo--brand {
+  display: grid;
+  place-items: center;
+  padding: 12%;
+  background: #fff;
+}
+
+.partners__logo--brand img {
+  object-fit: contain;
+}
+
 .partners__name {
   font-family: var(--font-label);
   font-weight: 600;
