@@ -19,9 +19,9 @@ Confirmar producto y monto con el cliente antes de activar producción.
 3. El navegador envía `token_ws` a Webpay mediante un formulario POST.
 4. Transbank vuelve a `GET` o `POST /api/webpay/confirmar`.
 5. `confirmar` confirma la transacción y redirige a `comprobante.html?t=...`.
-6. `comprobante.html` consulta `GET /api/webpay/resultado?t=...` y muestra la página de éxito o rechazo con estado, glosa, monto, orden de compra y fecha.
+6. `comprobante.html` consulta `GET /api/webpay/resultado?t=...` y muestra la página de éxito o rechazo con estado, glosa, monto, orden de compra y fecha. En pagos aprobados agrega comercio (Williams Sport SpA), código de autorización, tipo de pago (VD = Débito; VN, VC, SI, S2, NC = Crédito; VP = Prepago), cuotas y últimos 4 dígitos de la tarjeta. En pagos rechazados muestra las posibles causas.
 
-El token de resultado está firmado con HMAC SHA-256 y expira a las 24 horas.
+El token de resultado está cifrado con AES-256-GCM y firmado con HMAC SHA-256. Ambas claves se derivan de `PAYMENT_RESULT_SECRET` con HKDF. Expira a las 24 horas.
 
 ## Endpoints
 
@@ -29,7 +29,7 @@ El token de resultado está firmado con HMAC SHA-256 y expira a las 24 horas.
 | --- | --- | --- |
 | `/api/webpay/crear` | POST | Crea la transacción en Webpay |
 | `/api/webpay/confirmar` | GET, POST | Recibe el retorno de Transbank y confirma el pago |
-| `/api/webpay/resultado` | GET | Entrega el resultado a partir del token firmado |
+| `/api/webpay/resultado` | GET | Entrega el resultado a partir del token cifrado y firmado |
 
 ## Variables de entorno
 
@@ -95,10 +95,11 @@ Registrar la evidencia:
 
 ## Seguridad
 
-- El sitio no recibe, muestra ni guarda datos de tarjeta, correo, nombre ni código de autorización.
+- El sitio no recibe ni guarda datos de tarjeta, correo ni nombre. En pagos aprobados el comprobante muestra solo los últimos 4 dígitos que entrega Transbank y el código de autorización, ambos dentro del token de resultado cifrado; no se guardan en el navegador ni en el servidor.
+- El token de resultado está cifrado y firmado: su contenido (incluidos los últimos 4 dígitos) no se puede leer ni modificar desde la URL del comprobante.
 - El navegador solo recibe la URL y el token de inicio de Webpay.
 - La confirmación se hace siempre en el servidor.
-- El resultado se muestra únicamente con un token firmado que expira en 24 horas.
+- El resultado se muestra únicamente con un token cifrado y firmado que expira en 24 horas.
 - Los logs no incluyen tokens ni datos de tarjeta. Registran orden de compra, estado, monto y fecha.
 - `PAYMENT_RESULT_SECRET` solo se configura como variable de entorno. `WEBPAY_COMMERCE_CODE` y `WEBPAY_API_KEY` también, incluso en integración. No hay claves en el código ni en el front.
 - La URL de retorno se construye con `SITE_URL`; no se acepta una URL de retorno enviada por el navegador.

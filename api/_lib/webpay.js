@@ -83,7 +83,53 @@ export function mapCommitResult(result = {}) {
     buyOrder: result.buy_order ?? result.buyOrder ?? null,
     amount: Number.isFinite(amount) ? amount : 0,
     transactionDate: result.transaction_date ?? result.transactionDate ?? null,
+    authorizationCode: sanitizeAuthorizationCode(
+      result.authorization_code ?? result.authorizationCode
+    ),
+    paymentType: mapPaymentType(
+      result.payment_type_code ?? result.paymentTypeCode
+    ),
+    installments: sanitizeInstallments(
+      result.installments_number ?? result.installmentsNumber
+    ),
+    cardLast4: sanitizeCardLast4(
+      result.card_detail?.card_number ?? result.cardDetail?.cardNumber
+    ),
   };
+}
+
+const PAYMENT_TYPES = {
+  VD: 'Débito',
+  VN: 'Crédito',
+  VC: 'Crédito',
+  SI: 'Crédito',
+  S2: 'Crédito',
+  NC: 'Crédito',
+  VP: 'Prepago',
+};
+
+function mapPaymentType(code) {
+  if (typeof code !== 'string') return null;
+  return PAYMENT_TYPES[code.trim().toUpperCase()] || null;
+}
+
+function sanitizeAuthorizationCode(value) {
+  if (value === null || value === undefined) return null;
+  const code = String(value).trim();
+  return /^[A-Za-z0-9]{1,12}$/.test(code) ? code : null;
+}
+
+function sanitizeInstallments(value) {
+  if (value === null || value === undefined || value === '') return null;
+  const number = Number(value);
+  return Number.isInteger(number) && number >= 0 && number <= 99 ? number : null;
+}
+
+// Transbank entrega solo los últimos 4 dígitos; igual se recorta por seguridad.
+function sanitizeCardLast4(value) {
+  if (value === null || value === undefined) return null;
+  const digits = String(value).replace(/\D/g, '');
+  return digits.length >= 4 ? digits.slice(-4) : null;
 }
 
 export function isTransbankUrl(value) {

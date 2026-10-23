@@ -18,6 +18,11 @@
       titulo: 'El pago no se pudo completar',
       mensaje:
         'Transbank no autorizó el pago. No se realizó ningún cobro. Puedes intentarlo nuevamente desde la página del curso.',
+      causas: [
+        'Error en los datos de la tarjeta ingresados.',
+        'Saldo o cupo insuficiente.',
+        'Tarjeta no habilitada para compras en línea.',
+      ],
       ok: false,
     },
     cancelado: {
@@ -104,6 +109,25 @@
     }).format(fecha);
   }
 
+  function formatearCuotas(valor) {
+    if (valor === null || valor === undefined) return '';
+    if (valor === 0) return 'Sin cuotas';
+    return valor === 1 ? '1 cuota' : valor + ' cuotas';
+  }
+
+  function listaCausas(causas) {
+    if (!causas) return '';
+    return (
+      '<div class="comp__causes"><p>Posibles causas:</p><ul>' +
+      causas
+        .map(function (causa) {
+          return '<li>' + causa + '</li>';
+        })
+        .join('') +
+      '</ul></div>'
+    );
+  }
+
   function renderResultado(data) {
     var estado = ESTADOS[data.status] || ESTADOS.error;
     var monto = formatearMonto(data.amount);
@@ -122,13 +146,19 @@
         escapeHtml(data.glosa || 'Clínica Certificado Monitor de Fútbol') +
         '</p>' +
         '<dl class="comp__list">' +
+        fila('Comercio', data.commerce) +
         fila('Orden de compra', data.buyOrder) +
         fila('Monto', monto) +
         fila('Fecha', fecha) +
+        fila('Código de autorización', data.authorizationCode) +
+        fila('Tipo de pago', data.paymentType) +
+        fila('Cuotas', formatearCuotas(data.installments)) +
+        fila('Tarjeta', data.cardLast4 ? '•••• ' + data.cardLast4 : '') +
         '</dl>' +
         '<p class="comp__msg">' +
         estado.mensaje +
         '</p>' +
+        listaCausas(estado.causas) +
         acciones()
     );
 

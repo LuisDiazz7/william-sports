@@ -78,11 +78,21 @@ export default async function handler(req, res) {
           environment: webpay.environment,
         });
 
+        const detalle = commit.authorized
+          ? {
+              authorizationCode: commit.authorizationCode,
+              paymentType: commit.paymentType,
+              installments: commit.installments,
+              cardLast4: commit.cardLast4,
+            }
+          : {};
+
         return redirectResult(res, siteUrl, {
           status,
           buyOrder: commit.buyOrder,
           amount,
           date,
+          ...detalle,
         });
       } catch (error) {
         logError('webpay_commit_error', error);
