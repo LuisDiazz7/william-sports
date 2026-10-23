@@ -52,7 +52,10 @@ window.addEventListener(
 /* ------------------------------------------------------------
    Enlace activo según la página actual
    ------------------------------------------------------------ */
-const currentPage = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
+// Páginas que no están en el menú y marcan como activa la sección a la que pertenecen
+const parentPages = { 'curso.html': 'cursos.html' };
+const pageName = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
+const currentPage = parentPages[pageName] || pageName;
 
 navLinks.forEach((link) => {
   const href = (link.getAttribute('href') || '').split('/').pop().toLowerCase();

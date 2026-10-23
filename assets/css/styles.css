@@ -177,7 +177,12 @@ p {
   align-items: center;
   justify-content: space-between;
   height: 100%;
-  gap: var(--space-6);
+  gap: var(--space-10);
+}
+
+/* El menú usa casi todo el ancho: logo a la izquierda, secciones a la derecha */
+.nav.container {
+  width: min(1400px, calc(100% - 4rem));
 }
 
 .nav__logo {
@@ -1381,8 +1386,8 @@ p {
   }
 }
 
-/* Con 8 enlaces el menú completo ya no cabe bajo 1300px: pasa al botón de menú */
-@media (max-width: 1300px) {
+/* Con 9 enlaces el menú completo ya no cabe bajo 1360px: pasa al botón de menú */
+@media (max-width: 1360px) {
   .nav__toggle {
     display: flex;
   }
