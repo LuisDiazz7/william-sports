@@ -175,6 +175,29 @@
   margin-bottom: var(--space-6);
 }
 
+/* Dos polaroids superpuestas: una arriba a la izquierda y otra abajo a la derecha */
+.polaroid-duo {
+  display: grid;
+}
+
+.polaroid-duo .polaroid {
+  grid-area: 1 / 1;
+  width: 74%;
+  max-width: 380px;
+}
+
+.polaroid-duo .polaroid:first-child {
+  justify-self: start;
+  align-self: start;
+  margin: 0 0 22% 0;
+}
+
+.polaroid-duo .polaroid:last-child {
+  justify-self: end;
+  align-self: end;
+  margin: 22% 0 0 0;
+}
+
 .sedes {
   display: flex;
   flex-direction: column;
