@@ -191,17 +191,10 @@
   .reg li { list-style: none; display: flex; gap: 10px; align-items: baseline; color: var(--fg-soft); font-size: 15px; }
   .reg li::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); flex: none; transform: translateY(-1px); }
   .reg .btn { width: 100%; }
-  .plazo { display: inline-flex; flex-wrap: wrap; gap: 4px 10px; align-items: center; padding: 8px 14px; border-radius: 999px; background: rgba(246, 194, 28, 0.1); border: 1px solid rgba(246, 194, 28, 0.45); color: var(--gold); font-size: 13px; font-weight: 600; }
-  .plazo i { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); display: block; }
   .reg .fine { color: var(--muted); font-size: 13px; text-align: center; }
   .reg .more { padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; text-align: center; }
   .reg .more a { color: var(--accent); }
 
-  /* ---------- cierre ---------- */
-  .closing { margin-inline: calc(-1 * max(16px, env(safe-area-inset-left, 0px))); padding: clamp(36px, 6vw, 64px) max(16px, env(safe-area-inset-left, 0px)); background: linear-gradient(180deg, #08142b, #0b2252); border-block: 1px solid var(--line); }
-  .closing .wrap { display: flex; flex-wrap: wrap; gap: 24px 40px; align-items: center; justify-content: space-between; }
-  .closing h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(32px, 4.4vw, 52px); line-height: 1.02; max-width: 18ch; text-wrap: balance; }
-  .closing p { color: var(--fg-soft); margin-top: 10px; }
   footer { padding-block: 28px 48px; display: flex; flex-wrap: wrap; gap: 8px 28px; justify-content: space-between; color: var(--muted); font-size: 14px; }
   footer a { color: var(--fg); text-decoration: none; border-bottom: 1px solid var(--line); }
 
@@ -401,7 +394,6 @@
       <aside class="reg" id="pagar" aria-label="Inscripción">
         <p class="label">Inscripción</p>
         <p class="price">$100.000<small>CLP · costo total</small></p>
-        <p class="plazo" id="plazo"><i aria-hidden="true"></i><span id="plazo-txt">Plazo 1 de inscripciones: hasta el 19 de octubre</span></p>
         <ul>
           <li>Coffee break</li>
           <li>Polera de regalo (indica tu talla)</li>
@@ -415,19 +407,6 @@
       </aside>
     </div>
   </div>
-
-  <section class="closing" aria-labelledby="h-cierre">
-    <div class="wrap">
-      <div>
-        <h2 id="h-cierre">Inscríbete antes de que cierre el plazo 1</h2>
-        <p>Viernes 13 de noviembre · 10:00 a 14:00 hrs · Sport Park Malloco</p>
-      </div>
-      <div class="cta-row">
-        <a class="btn btn-cream js-pay" href="#pagar">Pagar con Webpay</a>
-        <a class="btn btn-wa" href="https://wa.me/56984267737" target="_blank" rel="noopener">WhatsApp</a>
-      </div>
-    </div>
-  </section>
 
   <div class="wrap">
     <footer>
@@ -477,18 +456,6 @@
       showToast('El pago con Webpay estará disponible pronto. Escríbenos por WhatsApp para inscribirte.');
     });
   });
-
-  // Plazo 1: hasta el 19 de octubre de 2026, 23:59 hora de Chile (UTC-3)
-  var deadline = Date.UTC(2026, 9, 20, 2, 59, 59);
-  var txt = document.getElementById('plazo-txt');
-  var ms = deadline - Date.now();
-  if (ms <= 0) {
-    txt.textContent = 'Plazo 1 cerrado. Consulta por WhatsApp';
-  } else {
-    var d = Math.ceil(ms / 86400000);
-    var extra = d <= 1 ? 'cierra hoy' : 'quedan ' + d + ' días';
-    txt.textContent = 'Plazo 1 de inscripciones: hasta el 19 de octubre · ' + extra;
-  }
 
   // Visor de imágenes
   var lb = document.getElementById('lightbox'), lbImg = document.getElementById('lb-img'), lastFocus = null;
