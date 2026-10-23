@@ -2498,17 +2498,17 @@ p {
 
 .reel__head {
   display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-  align-items: end;
-  gap: clamp(1.5rem, 4vw, 4rem);
+  grid-template-columns: 1fr;
+  align-items: start;
+  gap: clamp(0.75rem, 1.5vw, 1.25rem);
   margin-bottom: clamp(2.5rem, 6vw, 4.5rem);
 }
 
 .reel__title {
   font-family: var(--font-hero);
   font-weight: 400;
-  font-size: clamp(2.6rem, 5.5vw, 5.25rem);
-  line-height: 0.92;
+  font-size: clamp(2.3rem, 4.4vw, 4rem);
+  line-height: 0.95;
   text-wrap: balance;
   letter-spacing: -0.01em;
   color: var(--ink-text);
@@ -2516,8 +2516,8 @@ p {
 }
 
 .reel__lead {
-  max-width: 34ch;
-  margin: 0 0 0.6rem auto;
+  max-width: 60ch;
+  margin: 0;
   font-size: clamp(1.05rem, 1.4vw, 1.25rem);
   line-height: 1.55;
   color: var(--color-cream-soft);
