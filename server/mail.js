@@ -49,7 +49,7 @@ function createMailer(env = process.env, logger = console) {
       `;
 
       await transporter.sendMail({
-        from: env.SMTP_FROM || 'William Sport <no-reply@williamssport.cl>',
+        from: env.SMTP_FROM || 'Williams Sport <no-reply@williamssport.cl>',
         to: orden.email,
         subject: `Comprobante de pago · ${evento.title}`,
         text: `Pago confirmado. Orden ${orden.buyOrder}. Monto ${formatoCLP(orden.amount)} CLP. Comprobante: ${receiptUrl}`,

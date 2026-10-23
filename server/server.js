@@ -16,7 +16,7 @@ app.use('/server', (req, res) => res.status(404).end());
 app.use(express.static(ROOT, { dotfiles: 'deny', index: 'index.html' }));
 
 app.listen(PORT, () => {
-  console.log(`William Sport server escuchando en http://localhost:${PORT}`);
+  console.log(`Williams Sport server escuchando en http://localhost:${PORT}`);
   console.log(`  GET  /api/evento`);
   console.log(`  POST /api/evento/pagar`);
   console.log(`  GET/POST /api/webpay/retorno`);

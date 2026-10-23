@@ -1,5 +1,5 @@
 /* ============================================================
-   WILLIAM · Ojeador · Entrenador · Capacitador
+   WILLIAMS · Ojeador · Entrenador · Capacitador
    Diseño editorial premium · Paleta azul oscuro / crema / azul
    ============================================================ */
 
@@ -1111,7 +1111,7 @@ p {
   margin-bottom: var(--space-5);
 }
 
-/* "William Sport · Fútbol" queda a la altura de "¿Quién es Williams?" y la foto parte a la altura de Biografía */
+/* "Williams Sport · Fútbol" queda a la altura de "¿Quién es Williams?" y la foto parte a la altura de Biografía */
 @media (min-width: 981px) {
   .about--editorial .about__media .hero__kicker {
     margin-bottom: calc(var(--space-8) + 1px + var(--space-6) + var(--space-3) - 0.03rem);
@@ -2173,7 +2173,7 @@ p {
 }
 
 /* ============================================================
-   "William Sport · Fútbol" al inicio de cada página
+   "Williams Sport · Fútbol" al inicio de cada página
    ============================================================ */
 
 .page-kicker {

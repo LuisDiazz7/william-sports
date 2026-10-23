@@ -1,5 +1,5 @@
 /* ============================================================
-   WILLIAM · Interacciones de la página
+   WILLIAMS · Interacciones de la página
    ============================================================ */
 
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

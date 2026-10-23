@@ -1,5 +1,5 @@
 /* ============================================================
-   WILLIAM SPORT · Clínica Certificado Monitor de Fútbol
+   WILLIAMS SPORT · Clínica Certificado Monitor de Fútbol
    Tarjeta flotante del evento (solo en el inicio): cuenta
    regresiva y modal de detalles. Componente autocontenido.
    ============================================================ */
