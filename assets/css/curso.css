@@ -347,6 +347,14 @@
   margin: 0 0 var(--space-3);
 }
 
+.terms__block h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--color-cream);
+  margin: var(--space-5) 0 var(--space-2);
+}
+
 .terms__block p,
 .terms__block li {
   color: var(--color-cream-soft);
@@ -388,17 +396,6 @@
 .terms__facts dd {
   margin: 0;
   color: var(--color-cream);
-}
-
-.terms__pending {
-  border: 1px dashed #f6c21c;
-  border-radius: var(--radius-md, 10px);
-  padding: var(--space-4);
-  background: rgba(246, 194, 28, 0.06);
-}
-
-.terms__pending strong {
-  color: #f6c21c;
 }
 
 .terms__back {

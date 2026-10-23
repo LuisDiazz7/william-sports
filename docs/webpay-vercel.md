@@ -117,6 +117,6 @@ Si falla la creación del pago, revisar `WEBPAY_COMMERCE_CODE`, `WEBPAY_API_KEY`
 
 ## Páginas relacionadas
 
-- `/terminos` (`terminos.html`, vía rewrite en `vercel.json`): servicio, precio, devoluciones y reclamos. La sección de suspensión del evento está marcada `[PENDIENTE]`.
+- `/terminos` (`terminos.html`, vía rewrite en `vercel.json`): servicio, precio, devoluciones (incluida la suspensión del evento por no alcanzar la cantidad mínima de asistentes) y reclamos.
 - El pie de página de todas las páginas muestra Williams Sport SpA, La Reina 868, ventas@williamssport.cl y WhatsApp +56 9 8426 7737.
 - `.vercelignore` evita publicar `docs/` y archivos de configuración local.
