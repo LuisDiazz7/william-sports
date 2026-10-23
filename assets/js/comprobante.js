@@ -8,7 +8,8 @@
   var ESTADOS = {
     aprobado: {
       badge: 'Pago aprobado',
-      titulo: 'Pago confirmado',
+      titulo: 'Pago realizado con éxito',
+      tono: 'ok',
       mensaje:
         'Tu pago fue aprobado. Conserva el número de orden para cualquier consulta.',
       ok: true,
@@ -16,6 +17,7 @@
     rechazado: {
       badge: 'Pago rechazado',
       titulo: 'El pago no se pudo completar',
+      tono: 'error',
       mensaje:
         'Transbank no autorizó el pago. No se realizó ningún cobro. Puedes intentarlo nuevamente desde la página del curso.',
       causas: [
@@ -28,6 +30,7 @@
     cancelado: {
       badge: 'Pago cancelado',
       titulo: 'Cancelaste el pago',
+      tono: 'warn',
       mensaje:
         'Cancelaste el proceso en Webpay. No se realizó ningún cobro. Cuando quieras, vuelve a la página del curso para inscribirte.',
       ok: false,
@@ -35,6 +38,7 @@
     timeout: {
       badge: 'Pago expirado',
       titulo: 'El pago expiró',
+      tono: 'warn',
       mensaje:
         'El proceso en Webpay expiró por inactividad. No se realizó ningún cobro. Intenta nuevamente desde la página del curso.',
       ok: false,
@@ -42,6 +46,7 @@
     error: {
       badge: 'Error en el pago',
       titulo: 'Hubo un problema con el pago',
+      tono: 'error',
       mensaje:
         'No pudimos confirmar el resultado del pago. Si ves un cargo en tu tarjeta, escríbenos por WhatsApp antes de intentarlo nuevamente.',
       ok: false,
@@ -57,30 +62,88 @@
       .replace(/'/g, '&#39;');
   }
 
-  function render(html) {
-    document.getElementById('comp-card').innerHTML = html;
+  var CURSO = 'Clínica Certificado Monitor de Fútbol';
+
+  var ICONOS = {
+    ok: '<path d="M5 12.5l4.5 4.5L19 7.5"/>',
+    error: '<path d="M7 7l10 10M17 7L7 17"/>',
+    warn: '<path d="M12 7v6"/><path d="M12 16.5v.5"/>',
+  };
+
+  function icono(tono) {
+    return (
+      '<div class="comp__icon" aria-hidden="true">' +
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">' +
+      (ICONOS[tono] || ICONOS.error) +
+      '</svg></div>'
+    );
   }
 
-  function acciones() {
+  function cabecera() {
+    return (
+      '<header class="comp__head">' +
+      '<div class="comp__brand">' +
+      '<img src="assets/images/logo-williams-sport.png" alt="">' +
+      '<span class="comp__brand-name">WILLIAMS SPORT</span>' +
+      '</div>' +
+      '<span class="comp__doc-label">Comprobante de pago</span>' +
+      '</header>'
+    );
+  }
+
+  function pie() {
+    return (
+      '<footer class="comp__foot">' +
+      '<p><strong>Williams Sport SpA</strong> · RUT 15.850.492-8 · La Reina 868</p>' +
+      '<p><a href="mailto:ventas@williamssport.cl">ventas@williamssport.cl</a> · WhatsApp ' +
+      '<a href="https://wa.me/56984267737" target="_blank" rel="noopener noreferrer">+56 9 8426 7737</a></p>' +
+      '<p><a href="/terminos">Términos y condiciones</a></p>' +
+      '</footer>'
+    );
+  }
+
+  function acciones(conPdf) {
     return (
       '<div class="comp__actions">' +
-      '<a class="btn btn--ghost" href="curso.html">Volver al curso</a>' +
-      '<a class="btn btn--whatsapp" href="' +
+      (conPdf
+        ? '<button type="button" class="comp__btn comp__btn--primary" id="comp-pdf">' +
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10.5l5 5 5-5M5 20h14"/></svg>' +
+          'Descargar comprobante PDF</button>'
+        : '') +
+      '<a class="comp__btn" href="curso.html">Volver al curso</a>' +
+      '<a class="comp__btn comp__btn--wa" href="' +
       WHATSAPP +
       '" target="_blank" rel="noopener noreferrer">' +
-      '<img class="btn__icon" src="assets/svg/whatsapp.svg" alt="" aria-hidden="true"> Consultar por WhatsApp</a>' +
+      '<img src="assets/svg/whatsapp.svg" alt="" aria-hidden="true"> Consultar por WhatsApp</a>' +
       '</div>'
     );
   }
 
-  function fila(etiqueta, valor) {
-    if (valor === null || valor === undefined || valor === '') return '';
+  function render(tono, html) {
+    var card = document.getElementById('comp-card');
+    card.className = 'comp__card comp--' + tono;
+    card.innerHTML = cabecera() + html + pie();
+
+    var pdf = document.getElementById('comp-pdf');
+    if (pdf) {
+      pdf.addEventListener('click', function () {
+        window.print();
+      });
+    }
+  }
+
+  // En pagos aprobados se muestran todas las filas, aunque falte algún dato.
+  function fila(etiqueta, valor, siempre, clase) {
+    var vacio = valor === null || valor === undefined || valor === '';
+    if (vacio && !siempre) return '';
     return (
-      '<div class="comp__row"><dt>' +
+      '<tr><th scope="row">' +
       etiqueta +
-      '</dt><dd>' +
-      escapeHtml(valor) +
-      '</dd></div>'
+      '</th><td' +
+      (clase ? ' class="' + clase + '"' : '') +
+      '>' +
+      (vacio ? '—' : escapeHtml(valor)) +
+      '</td></tr>'
     );
   }
 
@@ -88,11 +151,13 @@
     if (valor === null || valor === undefined || valor === '') return '';
     var monto = Number(valor);
     if (!Number.isFinite(monto)) return '';
-    return new Intl.NumberFormat('es-CL', {
-      style: 'currency',
-      currency: 'CLP',
-      maximumFractionDigits: 0,
-    }).format(monto);
+    return (
+      new Intl.NumberFormat('es-CL', {
+        style: 'currency',
+        currency: 'CLP',
+        maximumFractionDigits: 0,
+      }).format(monto) + ' CLP'
+    );
   }
 
   function formatearFecha(valor) {
@@ -105,8 +170,9 @@
       year: 'numeric',
       hour: '2-digit',
       minute: '2-digit',
+      hour12: false,
       timeZone: 'America/Santiago',
-    }).format(fecha);
+    }).format(fecha) + ' hrs';
   }
 
   function formatearCuotas(valor) {
@@ -130,36 +196,37 @@
 
   function renderResultado(data) {
     var estado = ESTADOS[data.status] || ESTADOS.error;
-    var monto = formatearMonto(data.amount);
-    var fecha = formatearFecha(data.date);
+    var aprobado = data.status === 'aprobado';
 
     render(
-      '<span class="comp__badge ' +
-        (estado.ok ? 'comp__badge--ok' : 'comp__badge--error') +
-        '">' +
-        estado.badge +
-        '</span>' +
+      estado.tono,
+      '<div class="comp__status">' +
+        icono(estado.tono) +
         '<h1 class="comp__title">' +
         estado.titulo +
         '</h1>' +
         '<p class="comp__subtitle">' +
-        escapeHtml(data.glosa || 'Clínica Certificado Monitor de Fútbol') +
+        CURSO +
         '</p>' +
-        '<dl class="comp__list">' +
-        fila('Comercio', data.commerce) +
-        fila('Orden de compra', data.buyOrder) +
-        fila('Monto', monto) +
-        fila('Fecha', fecha) +
-        fila('Código de autorización', data.authorizationCode) +
-        fila('Tipo de pago', data.paymentType) +
-        fila('Cuotas', formatearCuotas(data.installments)) +
-        fila('Tarjeta', data.cardLast4 ? '•••• ' + data.cardLast4 : '') +
-        '</dl>' +
+        '</div>' +
+        '<div class="comp__body">' +
+        '<table class="comp__table" aria-label="Detalle del pago"><tbody>' +
+        fila('Comercio', aprobado ? data.commerce || 'Williams Sport SpA' : null, aprobado) +
+        fila('Orden de compra', data.buyOrder, aprobado) +
+        fila('Descripción del servicio', data.glosa, aprobado) +
+        fila('Monto', formatearMonto(data.amount), aprobado, 'comp__amount') +
+        fila('Fecha y hora', formatearFecha(data.date), aprobado) +
+        fila('Código de autorización', data.authorizationCode, aprobado) +
+        fila('Tipo de pago', data.paymentType, aprobado) +
+        fila('Cuotas', formatearCuotas(data.installments), aprobado) +
+        fila('Tarjeta', data.cardLast4 ? '•••• ' + data.cardLast4 : '', aprobado) +
+        '</tbody></table>' +
         '<p class="comp__msg">' +
         estado.mensaje +
         '</p>' +
         listaCausas(estado.causas) +
-        acciones()
+        '</div>' +
+        acciones(aprobado)
     );
 
     document.title = estado.badge + ' | Williams Sport';
@@ -167,12 +234,18 @@
 
   function renderInvalido(mensaje) {
     render(
-      '<span class="comp__badge comp__badge--error">Resultado no disponible</span>' +
+      'error',
+      '<div class="comp__status">' +
+        icono('error') +
         '<h1 class="comp__title">No pudimos mostrar el resultado</h1>' +
-        '<p class="comp__msg">' +
-        mensaje +
+        '<p class="comp__subtitle">' +
+        CURSO +
         '</p>' +
-        acciones()
+        '</div>' +
+        '<div class="comp__body"><p class="comp__msg">' +
+        mensaje +
+        '</p></div>' +
+        acciones(false)
     );
     document.title = 'Resultado no disponible | Williams Sport';
   }
