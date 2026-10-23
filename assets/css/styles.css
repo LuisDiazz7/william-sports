@@ -1203,6 +1203,26 @@ p {
   color: var(--color-dim);
 }
 
+.footer__legal {
+  font-size: 0.9rem;
+  color: var(--color-muted);
+  overflow-wrap: anywhere;
+}
+
+.footer__legal a,
+.footer__copy a {
+  color: var(--color-cream-soft);
+  border-bottom: 1px solid var(--color-line);
+  transition: color var(--dur-base) var(--ease-out);
+}
+
+.footer__legal a:hover,
+.footer__legal a:focus-visible,
+.footer__copy a:hover,
+.footer__copy a:focus-visible {
+  color: var(--color-cream);
+}
+
 /* ============================================================
    Botones flotantes de contacto (izquierda)
    ============================================================ */

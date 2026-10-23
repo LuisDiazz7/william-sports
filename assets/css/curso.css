@@ -401,3 +401,110 @@
   flex-direction: column;
   gap: var(--space-3);
 }
+
+/* ============================================================
+   TÉRMINOS Y CONDICIONES
+   ============================================================ */
+
+.terms {
+  padding: calc(var(--header-h) + var(--space-9)) 0 var(--space-12);
+}
+
+.terms__doc {
+  max-width: 46rem;
+  margin: 0 auto;
+}
+
+.terms__title {
+  font-family: var(--font-editorial);
+  font-weight: 500;
+  font-size: clamp(2.2rem, 5vw, 3rem);
+  line-height: 1.1;
+  color: var(--color-cream);
+  margin: 0 0 var(--space-2);
+}
+
+.terms__updated {
+  color: var(--color-dim);
+  font-size: 0.9rem;
+  margin: 0 0 var(--space-8);
+}
+
+.terms__block {
+  padding: var(--space-6) 0;
+  border-top: 1px solid var(--color-line-soft);
+}
+
+.terms__block h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 0.04em;
+  color: var(--color-cream);
+  margin: 0 0 var(--space-3);
+}
+
+.terms__block p,
+.terms__block li {
+  color: var(--color-cream-soft);
+  margin: 0 0 var(--space-3);
+}
+
+.terms__block ul {
+  padding-left: 1.2rem;
+  margin: 0;
+}
+
+.terms__block a,
+.terms__back a {
+  color: var(--color-accent);
+  overflow-wrap: anywhere;
+}
+
+.terms__facts {
+  margin: var(--space-4) 0 0;
+}
+
+.terms__facts > div {
+  display: grid;
+  grid-template-columns: 7rem minmax(0, 1fr);
+  gap: var(--space-4);
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--color-line-soft);
+}
+
+.terms__facts dt {
+  color: var(--color-muted);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.terms__facts dd {
+  margin: 0;
+  color: var(--color-cream);
+}
+
+.terms__pending {
+  border: 1px dashed #f6c21c;
+  border-radius: var(--radius-md, 10px);
+  padding: var(--space-4);
+  background: rgba(246, 194, 28, 0.06);
+}
+
+.terms__pending strong {
+  color: #f6c21c;
+}
+
+.terms__back {
+  margin-top: var(--space-6);
+}
+
+@media (max-width: 560px) {
+  .terms__facts > div {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-1);
+  }
+}

@@ -118,7 +118,9 @@
         '<h1 class="comp__title">' +
         estado.titulo +
         '</h1>' +
-        '<p class="comp__subtitle">Clínica Certificado Monitor de Fútbol</p>' +
+        '<p class="comp__subtitle">' +
+        escapeHtml(data.glosa || 'Clínica Certificado Monitor de Fútbol') +
+        '</p>' +
         '<dl class="comp__list">' +
         fila('Orden de compra', data.buyOrder) +
         fila('Monto', monto) +
@@ -155,7 +157,7 @@
     return;
   }
 
-  fetch('/api/resultado-pago?t=' + encodeURIComponent(token))
+  fetch('/api/webpay/resultado?t=' + encodeURIComponent(token))
     .then(function (respuesta) {
       if (!respuesta.ok) throw new Error('Resultado no disponible');
       return respuesta.json();

@@ -101,7 +101,7 @@ export function logError(event, error) {
 
   if (
     error instanceof Error &&
-    /^(SITE_URL|PAYMENT_RESULT_SECRET|TBK_)/.test(error.message)
+    /^(SITE_URL|PAYMENT_RESULT_SECRET|WEBPAY_)/.test(error.message)
   ) {
     details.reason = error.message;
   }

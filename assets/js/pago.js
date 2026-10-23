@@ -47,7 +47,7 @@
   }
 
   function crearPago(producto) {
-    return fetch('/api/crear-pago', {
+    return fetch('/api/webpay/crear', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ producto: producto }),

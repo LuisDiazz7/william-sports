@@ -6,21 +6,27 @@ const {
   Options,
   Environment,
   IntegrationCommerceCodes,
-  IntegrationApiKeys,
 } = require('transbank-sdk');
 
+// Las credenciales se leen solo desde variables de entorno, en ambos entornos.
 export function createWebpay(env = process.env) {
-  const isProduction =
-    String(env.TBK_ENV || '').trim().toLowerCase() === 'production';
-  const commerceCode =
-    String(env.TBK_COMMERCE_CODE || '').trim() ||
-    (isProduction ? '' : IntegrationCommerceCodes.WEBPAY_PLUS);
-  const apiKey =
-    String(env.TBK_API_KEY || '').trim() ||
-    (isProduction ? '' : IntegrationApiKeys.WEBPAY);
+  const environment =
+    String(env.WEBPAY_ENV || 'integration').trim().toLowerCase();
+  if (environment !== 'integration' && environment !== 'production') {
+    throw new Error('WEBPAY_ENV debe ser integration o production');
+  }
+  const isProduction = environment === 'production';
+  const commerceCode = String(env.WEBPAY_COMMERCE_CODE || '').trim();
+  const apiKey = String(env.WEBPAY_API_KEY || '').trim();
 
   if (!commerceCode || !apiKey) {
-    throw new Error('TBK_COMMERCE_CODE y TBK_API_KEY son obligatorios');
+    throw new Error('WEBPAY_COMMERCE_CODE y WEBPAY_API_KEY son obligatorios');
+  }
+
+  if (isProduction && commerceCode === IntegrationCommerceCodes.WEBPAY_PLUS) {
+    throw new Error(
+      'WEBPAY_ENV=production no puede usar el código de comercio de integración'
+    );
   }
 
   const options = new Options(
@@ -30,7 +36,7 @@ export function createWebpay(env = process.env) {
   );
 
   return {
-    environment: isProduction ? 'production' : 'integration',
+    environment,
     create(buyOrder, sessionId, amount, returnUrl) {
       return new WebpayPlus.Transaction(options).create(
         buyOrder,
