@@ -1845,7 +1845,9 @@ p {
 
 /* Título sobre una franja azul a todo el ancho de su columna
    (mismo color que la franja final de la galería) */
-.title-band {
+h1.title-band,
+h2.title-band,
+h3.title-band {
   display: block;
   padding: 0.3em 0.55em 0.2em;
   background: var(--color-accent-deep);
