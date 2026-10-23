@@ -1835,6 +1835,15 @@ p {
   margin: 0 0 1rem;
 }
 
+/* Título sobre una franja azul a todo el ancho de su columna
+   (mismo color que la franja final de la galería) */
+.title-band {
+  display: block;
+  padding: 0.3em 0.55em 0.2em;
+  background: var(--color-accent-deep);
+  color: #fff;
+}
+
 .service-row__text {
   font-family: var(--font-serif);
   font-size: clamp(1.05rem, 1.5vw, 1.2rem);
