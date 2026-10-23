@@ -1767,6 +1767,10 @@ p {
   margin: 0 0 1rem;
 }
 
+.work__title--sm {
+  font-size: clamp(2.25rem, 5vw, 4rem);
+}
+
 .work__subtitle {
   font-family: var(--font-serif);
   font-size: clamp(1.05rem, 1.6vw, 1.25rem);
