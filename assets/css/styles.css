@@ -1847,7 +1847,8 @@ p {
    (mismo color que la franja final de la galería) */
 h1.title-band,
 h2.title-band,
-h3.title-band {
+h3.title-band,
+p.title-band {
   display: block;
   padding: 0.3em 0.55em 0.2em;
   background: var(--color-accent-deep);
@@ -2079,10 +2080,11 @@ h3.title-band {
 }
 
 .convenios__lead {
-  font-family: var(--font-serif);
-  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  font-family: var(--font-sans);
+  font-size: clamp(1rem, 2vw, 1.3rem);
   line-height: 1.6;
   color: var(--ink-muted);
+  text-wrap: balance;
   margin: 0;
 }
 
