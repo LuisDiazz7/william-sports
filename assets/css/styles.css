@@ -2183,3 +2183,71 @@ p {
     animation: none;
   }
 }
+
+/* ============================================================
+   Entrevistas
+   ============================================================ */
+
+.interviews {
+  display: flex;
+  flex-direction: column;
+  max-width: 56rem;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--color-line);
+}
+
+.interviews__item {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 3vw, 2rem);
+  padding: clamp(1.25rem, 3vw, 1.75rem) 0;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.interviews__num {
+  font-family: var(--font-hero);
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1;
+  color: var(--ink-accent);
+  min-width: 2ch;
+}
+
+.interviews__info {
+  flex: 1;
+  min-width: 0;
+}
+
+.interviews__eyebrow {
+  display: block;
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.interviews__name {
+  font-family: var(--font-hero);
+  font-weight: 400;
+  font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+  line-height: 1.05;
+  color: var(--ink-text);
+}
+
+.interviews__link {
+  flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+  .interviews__item {
+    flex-wrap: wrap;
+  }
+
+  .interviews__link {
+    width: 100%;
+    justify-content: center;
+  }
+}
