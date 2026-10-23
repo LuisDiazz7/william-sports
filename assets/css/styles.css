@@ -779,6 +779,18 @@ p {
   color: var(--color-cream);
 }
 
+.about__subheading.title-band {
+  align-self: flex-start;
+  font-size: clamp(1.1rem, 1.7vw, 1.4rem);
+  letter-spacing: 0.14em;
+  padding: 0.55em 0.7em 0.45em;
+  color: #fff;
+}
+
+.about__subheading.title-band + .about__text {
+  margin-top: 0;
+}
+
 .about__text {
   color: var(--color-muted);
   max-width: 60ch;
