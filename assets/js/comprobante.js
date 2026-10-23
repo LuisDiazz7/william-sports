@@ -1,134 +1,177 @@
-/* ============================================================
-   COMPROBANTE · Muestra el comprobante de pago o el estado
-   IIFE autocontenida
-   ============================================================ */
-
 (function () {
   'use strict';
 
-  var API_CANDIDATES = ['', 'http://localhost:3000'];
-  var WHATSAPP = 'https://wa.me/56984267737';
-
-  var params = new URLSearchParams(window.location.search);
-  var token = params.get('token');
-  var estado = params.get('estado');
+  var WHATSAPP =
+    'https://wa.me/56984267737?text=' +
+    encodeURIComponent('Hola Williams, tengo una consulta sobre mi pago.');
 
   var ESTADOS = {
-    rejected: {
+    aprobado: {
+      badge: 'Pago aprobado',
+      titulo: 'Pago confirmado',
+      mensaje:
+        'Tu pago fue aprobado. Conserva el número de orden para cualquier consulta.',
+      ok: true,
+    },
+    rechazado: {
       badge: 'Pago rechazado',
       titulo: 'El pago no se pudo completar',
-      mensaje: 'Transbank rechazó el pago. No se realizó ningún cobro. Puedes intentarlo nuevamente desde la página del curso.',
+      mensaje:
+        'Transbank no autorizó el pago. No se realizó ningún cobro. Puedes intentarlo nuevamente desde la página del curso.',
+      ok: false,
     },
-    cancelled: {
+    cancelado: {
       badge: 'Pago cancelado',
       titulo: 'Cancelaste el pago',
-      mensaje: 'Cancelaste el proceso en Webpay. No se realizó ningún cobro. Cuando quieras, vuelve a la página del curso para inscribirte.',
+      mensaje:
+        'Cancelaste el proceso en Webpay. No se realizó ningún cobro. Cuando quieras, vuelve a la página del curso para inscribirte.',
+      ok: false,
     },
-    failed: {
+    timeout: {
+      badge: 'Pago expirado',
+      titulo: 'El pago expiró',
+      mensaje:
+        'El proceso en Webpay expiró por inactividad. No se realizó ningún cobro. Intenta nuevamente desde la página del curso.',
+      ok: false,
+    },
+    error: {
       badge: 'Error en el pago',
       titulo: 'Hubo un problema con el pago',
-      mensaje: 'El proceso en Webpay tuvo un error o expiró. No se realizó ningún cobro. Intenta nuevamente desde la página del curso.',
+      mensaje:
+        'No pudimos confirmar el resultado del pago. Si ves un cargo en tu tarjeta, escríbenos por WhatsApp antes de intentarlo nuevamente.',
+      ok: false,
     },
   };
 
-  function escapeHtml(s) {
-    return String(s == null ? '' : s)
-      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  function escapeHtml(valor) {
+    return String(valor == null ? '' : valor)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
   }
 
   function render(html) {
     document.getElementById('comp-card').innerHTML = html;
   }
 
-  function acciones(extra) {
-    return '<div class="comp__actions">' +
-      (extra || '') +
+  function acciones() {
+    return (
+      '<div class="comp__actions">' +
       '<a class="btn btn--ghost" href="curso.html">Volver al curso</a>' +
-      '<a class="btn btn--whatsapp" href="' + WHATSAPP + '" target="_blank" rel="noopener noreferrer">' +
+      '<a class="btn btn--whatsapp" href="' +
+      WHATSAPP +
+      '" target="_blank" rel="noopener noreferrer">' +
       '<img class="btn__icon" src="assets/svg/whatsapp.svg" alt="" aria-hidden="true"> Consultar por WhatsApp</a>' +
-      '</div>';
-  }
-
-  function renderEstado(clave) {
-    var e = ESTADOS[clave] || ESTADOS.failed;
-    render(
-      '<span class="comp__badge comp__badge--error">' + e.badge + '</span>' +
-      '<h1 class="comp__title">' + e.titulo + '</h1>' +
-      '<p class="comp__msg">' + e.mensaje + '</p>' +
-      acciones()
+      '</div>'
     );
-    document.title = e.badge + ' | Williams Sport';
-  }
-
-  function renderNoEncontrado() {
-    render(
-      '<span class="comp__badge comp__badge--error">No encontrado</span>' +
-      '<h1 class="comp__title">Comprobante no encontrado</h1>' +
-      '<p class="comp__msg">El enlace no es válido o el pago aún no está confirmado. Si acabas de pagar, espera unos segundos y recarga la página.</p>' +
-      acciones()
-    );
-    document.title = 'Comprobante no encontrado | Williams Sport';
   }
 
   function fila(etiqueta, valor) {
     if (valor === null || valor === undefined || valor === '') return '';
-    return '<div class="comp__row"><dt>' + etiqueta + '</dt><dd>' + escapeHtml(valor) + '</dd></div>';
-  }
-
-  function renderComprobante(c) {
-    render(
-      '<span class="comp__badge comp__badge--ok">Pago confirmado</span>' +
-      '<h1 class="comp__title">Comprobante de pago</h1>' +
-      '<p class="comp__subtitle">' + escapeHtml(c.evento.title) + ' · ' + escapeHtml(c.evento.edition) + '</p>' +
-      '<dl class="comp__list">' +
-      fila('N.° de orden', c.numeroOrden) +
-      fila('Participante', c.participante) +
-      fila('Talla', c.talla) +
-      fila('Fecha del evento', c.fecha) +
-      fila('Horario', c.horario) +
-      fila('Lugar', c.lugar) +
-      fila('Monto', '$' + new Intl.NumberFormat('es-CL').format(c.monto) + ' ' + c.moneda) +
-      fila('Fecha de pago', c.fechaPago) +
-      fila('Tarjeta', c.tarjetaUltimos4 ? '**** ' + c.tarjetaUltimos4 : '') +
-      fila('Código de autorización', c.codigoAutorizacion) +
-      fila('Tipo de pago', c.tipoPago) +
-      fila('Cuotas', c.cuotas) +
-      fila('Correo', c.correo) +
-      '</dl>' +
-      '<p class="comp__msg">' + escapeHtml(c.mensaje) + '</p>' +
-      acciones()
+    return (
+      '<div class="comp__row"><dt>' +
+      etiqueta +
+      '</dt><dd>' +
+      escapeHtml(valor) +
+      '</dd></div>'
     );
-    document.title = 'Comprobante ' + c.numeroOrden + ' | Williams Sport';
   }
 
-  function fetchJson(url) {
-    return fetch(url).then(function (res) {
-      if (res.status === 404) return { __404: true };
-      if (!res.ok) throw new Error('HTTP ' + res.status);
-      return res.json();
+  function formatearMonto(valor) {
+    if (valor === null || valor === undefined || valor === '') return '';
+    var monto = Number(valor);
+    if (!Number.isFinite(monto)) return '';
+    return new Intl.NumberFormat('es-CL', {
+      style: 'currency',
+      currency: 'CLP',
+      maximumFractionDigits: 0,
+    }).format(monto);
+  }
+
+  function formatearFecha(valor) {
+    if (!valor) return '';
+    var fecha = new Date(valor);
+    if (Number.isNaN(fecha.getTime())) return '';
+    return new Intl.DateTimeFormat('es-CL', {
+      day: '2-digit',
+      month: 'long',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      timeZone: 'America/Santiago',
+    }).format(fecha);
+  }
+
+  function renderResultado(data) {
+    var estado = ESTADOS[data.status] || ESTADOS.error;
+    var monto = formatearMonto(data.amount);
+    var fecha = formatearFecha(data.date);
+
+    render(
+      '<span class="comp__badge ' +
+        (estado.ok ? 'comp__badge--ok' : 'comp__badge--error') +
+        '">' +
+        estado.badge +
+        '</span>' +
+        '<h1 class="comp__title">' +
+        estado.titulo +
+        '</h1>' +
+        '<p class="comp__subtitle">Clínica Certificado Monitor de Fútbol</p>' +
+        '<dl class="comp__list">' +
+        fila('Orden de compra', data.buyOrder) +
+        fila('Monto', monto) +
+        fila('Fecha', fecha) +
+        '</dl>' +
+        '<p class="comp__msg">' +
+        estado.mensaje +
+        '</p>' +
+        acciones()
+    );
+
+    document.title = estado.badge + ' | Williams Sport';
+  }
+
+  function renderInvalido(mensaje) {
+    render(
+      '<span class="comp__badge comp__badge--error">Resultado no disponible</span>' +
+        '<h1 class="comp__title">No pudimos mostrar el resultado</h1>' +
+        '<p class="comp__msg">' +
+        mensaje +
+        '</p>' +
+        acciones()
+    );
+    document.title = 'Resultado no disponible | Williams Sport';
+  }
+
+  var params = new URLSearchParams(window.location.search);
+  var token = params.get('t');
+
+  if (!token) {
+    renderInvalido(
+      'El enlace de resultado no es válido. Si acabas de pagar, escríbenos por WhatsApp para revisar tu caso.'
+    );
+    return;
+  }
+
+  fetch('/api/resultado-pago?t=' + encodeURIComponent(token))
+    .then(function (respuesta) {
+      if (!respuesta.ok) throw new Error('Resultado no disponible');
+      return respuesta.json();
+    })
+    .then(function (data) {
+      if (!data || !ESTADOS[data.status]) {
+        renderInvalido(
+          'El enlace de resultado expiró o no es válido. Si acabas de pagar, escríbenos por WhatsApp para revisar tu caso.'
+        );
+        return;
+      }
+      renderResultado(data);
+    })
+    .catch(function () {
+      renderInvalido(
+        'El enlace de resultado expiró o no es válido. Si acabas de pagar, escríbenos por WhatsApp para revisar tu caso.'
+      );
     });
-  }
-
-  function buscarComprobante(i) {
-    return fetchJson(API_CANDIDATES[i] + '/api/comprobante/' + encodeURIComponent(token))
-      .then(function (data) {
-        if (data.__404) { renderNoEncontrado(); return; }
-        renderComprobante(data);
-      })
-      .catch(function () {
-        if (i + 1 < API_CANDIDATES.length) return buscarComprobante(i + 1);
-        renderNoEncontrado();
-      });
-  }
-
-  if (token) {
-    buscarComprobante(0);
-  } else if (estado && ESTADOS[estado]) {
-    renderEstado(estado);
-  } else if (estado) {
-    renderEstado('failed');
-  } else {
-    renderNoEncontrado();
-  }
 })();
