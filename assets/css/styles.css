@@ -1779,6 +1779,14 @@ p {
   margin: 0;
 }
 
+/* Misma letra que el subtítulo del inicio (.hero__subtitle) */
+.work__subtitle--sans {
+  font-family: var(--font-sans);
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  color: var(--color-muted);
+  text-wrap: balance;
+}
+
 .work__rows {
   display: flex;
   flex-direction: column;
