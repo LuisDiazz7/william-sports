@@ -413,10 +413,3 @@
     transform: none;
   }
 }
-
-/* --- Tercer video (video11.mp4): una sola polaroid centrada bajo las dos fotos --- */
-
-.videos-grid--single {
-  grid-template-columns: minmax(0, 1fr);
-  margin-top: clamp(2.5rem, 6vw, 4rem);
-}
