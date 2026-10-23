@@ -11,6 +11,13 @@ import {
   sendJson,
 } from '../_lib/http.js';
 
+// Solo en integración: deja el token visible en los logs para el formulario
+// de validación de Transbank. En producción nunca se registran tokens.
+function logTokenIntegracion(event, fields) {
+  if (process.env.WEBPAY_ENV !== 'integration') return;
+  console.log(JSON.stringify({ event, at: new Date().toISOString(), ...fields }));
+}
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return methodNotAllowed(res, ['POST']);
@@ -58,6 +65,13 @@ export default async function handler(req, res) {
       glosa: producto.glosa,
       monto: producto.monto,
       environment: webpay.environment,
+    });
+
+    logTokenIntegracion('webpay_create_token', {
+      token_ws: tx.token,
+      buyOrder,
+      status: 'creado',
+      monto: producto.monto,
     });
 
     return sendJson(res, 200, { url: tx.url, token: tx.token });

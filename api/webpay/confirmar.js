@@ -14,6 +14,13 @@ import {
   sendRedirect,
 } from '../_lib/http.js';
 
+// Solo en integración: deja el token visible en los logs para el formulario
+// de validación de Transbank. En producción nunca se registran tokens.
+function logTokenIntegracion(event, fields) {
+  if (process.env.WEBPAY_ENV !== 'integration') return;
+  console.log(JSON.stringify({ event, at: new Date().toISOString(), ...fields }));
+}
+
 function first(value) {
   if (Array.isArray(value)) return value[0] || '';
   return typeof value === 'string' ? value : '';
@@ -78,6 +85,13 @@ export default async function handler(req, res) {
           environment: webpay.environment,
         });
 
+        logTokenIntegracion('webpay_commit_token', {
+          token_ws: tokenWs,
+          buyOrder: commit.buyOrder,
+          status,
+          monto: amount,
+        });
+
         const detalle = commit.authorized
           ? {
               authorizationCode: commit.authorizationCode,
@@ -127,6 +141,13 @@ export default async function handler(req, res) {
       const producto = findProductoByBuyOrder(tbkOrder);
 
       logEvent('webpay_abort', {
+        buyOrder: tbkOrder || null,
+        status: 'cancelado',
+        monto: producto?.monto ?? null,
+      });
+
+      logTokenIntegracion('webpay_abort_token', {
+        TBK_TOKEN: tbkToken,
         buyOrder: tbkOrder || null,
         status: 'cancelado',
         monto: producto?.monto ?? null,
