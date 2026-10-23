@@ -16,7 +16,7 @@
     rel="stylesheet">
 
   <!-- CSS -->
-  <link rel="stylesheet" href="assets/css/styles.css?v=39">
+  <link rel="stylesheet" href="assets/css/styles.css?v=44">
 </head>
 
 <body>
@@ -70,79 +70,83 @@
 
   <main>
     <!-- Galería -->
-    <section id="galeria" class="gallery">
-      <div class="container">
+    <section id="galeria" class="reel">
+      <div class="reel__inner">
         <div class="hero__kicker page-kicker" data-reveal>
           <span>WILLIAM SPORT</span>
           <span class="hero__kicker-sep">·</span>
           <span>FÚTBOL</span>
         </div>
-        <header class="section__header section__header--center" data-reveal>
-          <span class="section__kicker">GALERÍA</span>
-          <h2 class="section__title section__title--editorial">Instantes del trabajo</h2>
-          <p class="section__lead">
-            Registros de partidos, entrenamientos, escuelas de fútbol y capacitaciones.
+        <header class="reel__head" data-reveal>
+          <h1 class="reel__title">Instantes del trabajo</h1>
+          <p class="reel__lead">
+            Partidos, entrenamientos y charlas: el trabajo de Williams Olave visto desde la cancha.
+            Toca cualquier imagen para verla en grande.
           </p>
         </header>
 
-        <div class="gallery__grid">
-          <figure class="gallery__item gallery__item--tall" data-reveal>
-            <button class="gallery__button" data-gallery-btn data-src="assets/images/willie2.jpeg"
-              data-alt="William en el borde de la cancha">
-              <img src="assets/images/willie2.jpeg" alt="William en el borde de la cancha" class="gallery__img"
-                loading="lazy" decoding="async">
-              <span class="gallery__overlay"><span class="gallery__zoom">Ampliar</span></span>
+        <div class="reel__grid">
+          <figure class="reel__item reel__item--lead" data-reveal style="--d:0ms">
+            <button class="reel__media" type="button" data-gallery-btn data-video="assets/videos/video1.mp4"
+              aria-label="Ver video: Charla en círculo">
+              <video class="reel__file" src="assets/videos/video1.mp4" autoplay muted playsinline loop preload="metadata"
+                aria-hidden="true"></video>
             </button>
-            <figcaption class="gallery__caption">En el borde de la cancha</figcaption>
+            <figcaption class="reel__caption">
+              <span class="reel__name">Charla en círculo</span>
+              <span class="reel__tag">Entrenamiento · Video</span>
+            </figcaption>
           </figure>
 
-          <figure class="gallery__item gallery__item--wide" data-reveal>
-            <button class="gallery__button" data-gallery-btn data-video="assets/videos/video1.mp4"
-              data-alt="Observación en estadio">
-              <video class="gallery__video" src="assets/videos/video1.mp4" autoplay muted playsinline loop
-                preload="auto" aria-label="Video de observación en estadio"></video>
-              <span class="gallery__overlay"><span class="gallery__zoom">Reproducir</span></span>
+          <figure class="reel__item reel__item--portrait" data-reveal style="--d:80ms">
+            <button class="reel__media" type="button" data-gallery-btn data-video="assets/videos/willie-project-1-vertical.mp4"
+              aria-label="Ver video: En el estadio">
+              <video class="reel__file" src="assets/videos/willie-project-1-vertical.mp4" autoplay muted playsinline loop preload="metadata"
+                aria-hidden="true"></video>
             </button>
-            <figcaption class="gallery__caption">Observación en estadio</figcaption>
+            <figcaption class="reel__caption">
+              <span class="reel__name">En el estadio</span>
+              <span class="reel__tag">Entrevista · Video</span>
+            </figcaption>
           </figure>
 
-          <figure class="gallery__item" data-reveal>
-            <button class="gallery__button" data-gallery-btn data-src="assets/images/willie22.jpeg" data-alt="Retrato">
-              <img src="assets/images/willie22.jpeg" alt="Retrato" class="gallery__img" loading="lazy"
-                decoding="async">
-              <span class="gallery__overlay"><span class="gallery__zoom">Ampliar</span></span>
+          <figure class="reel__item" data-reveal style="--d:160ms">
+            <button class="reel__media" type="button" data-gallery-btn data-src="assets/images/foto1.jpeg" data-alt="Jugadores juveniles de camiseta roja caminando por la cancha después de un partido"
+              aria-label="Ampliar foto: Después del partido">
+              <img class="reel__file" src="assets/images/foto1.jpeg" alt="Jugadores juveniles de camiseta roja caminando por la cancha después de un partido" loading="lazy" decoding="async">
             </button>
-            <figcaption class="gallery__caption">Retrato</figcaption>
+            <figcaption class="reel__caption">
+              <span class="reel__name">Después del partido</span>
+              <span class="reel__tag">Juveniles · Foto</span>
+            </figcaption>
           </figure>
 
-          <figure class="gallery__item gallery__item--tall gallery__item--vertical" data-reveal>
-            <button class="gallery__button" data-gallery-btn data-video="assets/videos/willie-project-1-vertical.mp4"
-              data-alt="William Olave">
-              <video class="gallery__video" src="assets/videos/willie-project-1-vertical.mp4" autoplay muted
-                playsinline loop preload="auto" aria-label="Video de William Olave"></video>
-              <span class="gallery__overlay"><span class="gallery__zoom">Reproducir</span></span>
+          <figure class="reel__item" data-reveal style="--d:240ms">
+            <button class="reel__media" type="button" data-gallery-btn data-src="assets/images/foto2.jpeg" data-alt="Partido de fútbol juvenil con el cuerpo técnico observando desde el borde de la cancha"
+              aria-label="Ampliar foto: Desde el borde de la cancha">
+              <img class="reel__file" src="assets/images/foto2.jpeg" alt="Partido de fútbol juvenil con el cuerpo técnico observando desde el borde de la cancha" loading="lazy" decoding="async">
             </button>
-            <figcaption class="gallery__caption">William Olave</figcaption>
+            <figcaption class="reel__caption">
+              <span class="reel__name">Desde el borde de la cancha</span>
+              <span class="reel__tag">Partido · Foto</span>
+            </figcaption>
           </figure>
 
-          <figure class="gallery__item" data-reveal>
-            <button class="gallery__button" data-gallery-btn data-src="assets/images/guantes-cono.svg"
-              data-alt="Conos y guantes de entrenamiento sobre el césped">
-              <img src="assets/images/guantes-cono.svg" alt="Conos y guantes de entrenamiento sobre el césped"
-                class="gallery__img" loading="lazy" decoding="async">
-              <span class="gallery__overlay"><span class="gallery__zoom">Ampliar</span></span>
-            </button>
-            <figcaption class="gallery__caption">Material de entrenamiento</figcaption>
-          </figure>
+          <aside class="reel__note" data-reveal style="--d:240ms">
+            <p class="reel__quote">El fútbol se observa, se enseña y se desarrolla.</p>
+            <a href="entrevistas.html" class="reel__link">Ver las entrevistas <span aria-hidden="true">→</span></a>
+          </aside>
 
-          <figure class="gallery__item gallery__item--wide" data-reveal>
-            <button class="gallery__button" data-gallery-btn data-video="assets/videos/video2.mp4"
-              data-alt="Capacitación">
-              <video class="gallery__video" src="assets/videos/video2.mp4" autoplay muted playsinline loop
-                preload="auto" aria-label="Video de capacitación"></video>
-              <span class="gallery__overlay"><span class="gallery__zoom">Reproducir</span></span>
+          <figure class="reel__item reel__item--wide" data-reveal style="--d:320ms">
+            <button class="reel__media" type="button" data-gallery-btn data-video="assets/videos/video2.mp4"
+              aria-label="Ver video: Entrenamiento nocturno">
+              <video class="reel__file" src="assets/videos/video2.mp4" autoplay muted playsinline loop preload="metadata"
+                aria-hidden="true"></video>
             </button>
-            <figcaption class="gallery__caption">Capacitación</figcaption>
+            <figcaption class="reel__caption">
+              <span class="reel__name">Entrenamiento nocturno</span>
+              <span class="reel__tag">Entrenamiento · Video</span>
+            </figcaption>
           </figure>
         </div>
       </div>
