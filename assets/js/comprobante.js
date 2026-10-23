@@ -94,7 +94,7 @@
   function pie() {
     return (
       '<footer class="comp__foot">' +
-      '<p><strong>Williams Sport SpA</strong> · RUT 15.850.492-8 · La Reina 868</p>' +
+      '<p><strong>Williams Sport SpA</strong> · RUT 78.473.946-5 · La Reina 868</p>' +
       '<p><a href="mailto:ventas@williamssport.cl">ventas@williamssport.cl</a> · WhatsApp ' +
       '<a href="https://wa.me/56984267737" target="_blank" rel="noopener noreferrer">+56 9 8426 7737</a></p>' +
       '<p><a href="/terminos">Términos y condiciones</a></p>' +
