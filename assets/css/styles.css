@@ -2471,7 +2471,7 @@ p {
 /* ============================================================
    Galería (página galeria.html)
    Mosaico editorial: una pieza principal, el video vertical a
-   dos filas, dos fotos y un cierre panorámico. Cada pieza lleva
+   dos filas, dos fotos y una franja de color al cierre. Cada pieza lleva
    su nombre sobre una franja oscura al pie.
    ============================================================ */
 
@@ -2541,32 +2541,29 @@ p {
   aspect-ratio: auto;
 }
 
-.reel__item--wide {
-  grid-column: 5 / span 8;
-  aspect-ratio: 16 / 9;
-}
-
-/* Bloque de color con la frase del sitio: cierra el mosaico junto al último video */
+/* Franja de color con la frase del sitio: cierra el mosaico a todo el ancho */
 .reel__note {
-  grid-column: 1 / span 4;
+  grid-column: 1 / -1;
   display: flex;
-  flex-direction: column;
+  align-items: flex-end;
   justify-content: space-between;
-  gap: 2rem;
-  padding: clamp(1.5rem, 3vw, 2.5rem);
+  gap: 1.5rem 3rem;
+  flex-wrap: wrap;
+  padding: clamp(1.75rem, 4vw, 3rem);
   background: var(--color-accent-deep);
   color: #fff;
 }
 
 .reel__quote {
+  max-width: 22ch;
   margin: 0;
   font-family: var(--font-hero);
-  font-size: clamp(2.2rem, 3.6vw, 3.6rem);
+  font-size: clamp(2.2rem, 4.2vw, 4rem);
   line-height: 0.95;
 }
 
 .reel__link {
-  align-self: flex-start;
+  margin-bottom: 0.4rem;
   font-weight: 600;
   color: #fff;
   border-bottom: 2px solid rgba(255, 255, 255, 0.5);
@@ -2643,8 +2640,7 @@ p {
   color: var(--ink-text);
 }
 
-.reel__item--lead .reel__name,
-.reel__item--wide .reel__name {
+.reel__item--lead .reel__name {
   font-size: clamp(2rem, 3.6vw, 3.4rem);
 }
 
@@ -2682,9 +2678,7 @@ p {
     grid-column: span 6;
   }
 
-  .reel__item--lead,
-  .reel__item--wide,
-  .reel__note {
+  .reel__item--lead {
     grid-column: 1 / -1;
   }
 
@@ -2692,9 +2686,6 @@ p {
     grid-column: 1 / span 6;
   }
 
-  .reel__item--wide {
-    order: 1;
-  }
 }
 
 @media (max-width: 600px) {

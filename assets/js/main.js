@@ -218,6 +218,40 @@ if (polaroids.length && !prefersReducedMotion) {
 }
 
 /* ------------------------------------------------------------
+   Videos automáticos: se aseguran de reproducirse al entrar a la
+   página. Si el navegador bloquea la reproducción (ahorro de batería
+   o de datos), arrancan con el primer toque, scroll o tecla, y se
+   reanudan cada vez que vuelven a estar en pantalla.
+   ------------------------------------------------------------ */
+const autoVideos = Array.from(document.querySelectorAll('video[autoplay]'));
+
+if (autoVideos.length) {
+  const playVideo = (video) => {
+    video.muted = true;
+    const attempt = video.play();
+    return attempt && attempt.catch ? attempt.catch(() => {}) : Promise.resolve();
+  };
+
+  autoVideos.forEach(playVideo);
+
+  const unlockEvents = ['pointerdown', 'touchstart', 'scroll', 'keydown'];
+  const unlock = () => {
+    autoVideos.filter((video) => video.paused).forEach(playVideo);
+    unlockEvents.forEach((type) => window.removeEventListener(type, unlock));
+  };
+  unlockEvents.forEach((type) => window.addEventListener(type, unlock, { passive: true }));
+
+  if ('IntersectionObserver' in window) {
+    const videoObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && entry.target.paused) playVideo(entry.target);
+      });
+    }, { threshold: 0.25 });
+    autoVideos.forEach((video) => videoObserver.observe(video));
+  }
+}
+
+/* ------------------------------------------------------------
    Reveal on scroll
    ------------------------------------------------------------ */
 const revealEls = document.querySelectorAll('[data-reveal]');
