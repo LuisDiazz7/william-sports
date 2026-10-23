@@ -1978,14 +1978,36 @@ p {
 
 /* Logos de marca completos (no recortados) sobre fondo blanco */
 .partners__logo--brand {
-  display: grid;
-  place-items: center;
-  padding: 12%;
+  position: relative;
   background: #fff;
 }
 
+/* Posición absoluta para que logos verticales también quepan enteros en el cuadrado */
 .partners__logo--brand img {
+  position: absolute;
+  inset: 12%;
+  width: 76%;
+  height: 76%;
   object-fit: contain;
+}
+
+/* Para logos con fondo oscuro propio: la tarjeta toma un tono parecido */
+.partners__logo--dark {
+  background: #04182f;
+}
+
+.partners__site {
+  margin-top: -0.5rem;
+  font-size: 0.9rem;
+  color: var(--ink-accent);
+  border-bottom: 1px solid transparent;
+  transition: color var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out);
+}
+
+.partners__site:hover,
+.partners__site:focus-visible {
+  color: var(--ink-text);
+  border-bottom-color: currentColor;
 }
 
 .partners__name {
