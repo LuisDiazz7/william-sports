@@ -1240,7 +1240,9 @@ p {
 }
 
 .wa-float,
-.ig-float {
+.ig-float,
+.tt-float,
+.fb-float {
   position: relative;
   width: 4rem;
   height: 4rem;
@@ -1256,6 +1258,14 @@ p {
   background: #25d366;
 }
 
+.tt-float {
+  background: #000000;
+}
+
+.fb-float {
+  background: #1877f2;
+}
+
 .ig-float {
   background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
 }
@@ -1263,12 +1273,18 @@ p {
 .wa-float:hover,
 .wa-float:focus-visible,
 .ig-float:hover,
-.ig-float:focus-visible {
+.ig-float:focus-visible,
+.tt-float:hover,
+.tt-float:focus-visible,
+.fb-float:hover,
+.fb-float:focus-visible {
   transform: translateY(-4px);
 }
 
 .wa-float__icon,
-.ig-float__icon {
+.ig-float__icon,
+.tt-float__icon,
+.fb-float__icon {
   width: 1.9rem;
   height: 1.9rem;
 }
