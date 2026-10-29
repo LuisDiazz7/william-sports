@@ -1,0 +1,9 @@
+# Archivos que no deben publicarse en el sitio
+docs/
+.agents/
+.claude/
+.taste-skill/
+.env*
+README.md
+index.ts
+tsconfig.json

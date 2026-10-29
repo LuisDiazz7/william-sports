@@ -11,5 +11,8 @@
   },
   "peerDependencies": {
     "typescript": "^7"
+  },
+  "dependencies": {
+    "transbank-sdk": "^6.1.1"
   }
 }

@@ -175,12 +175,12 @@ p {
 .nav {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   height: 100%;
-  gap: var(--space-10);
+  gap: clamp(var(--space-9), 6vw, 6rem);
 }
 
-/* El menú usa casi todo el ancho: logo a la izquierda, secciones a la derecha */
+/* Logo a la izquierda y las secciones justo a continuación, no pegadas al borde derecho */
 .nav.container {
   width: min(1400px, calc(100% - 4rem));
 }
@@ -215,7 +215,7 @@ p {
 
 .nav__list {
   display: flex;
-  gap: clamp(var(--space-4), 1.6vw, var(--space-6));
+  gap: clamp(0.85rem, 1.3vw, var(--space-6));
 }
 
 .nav__item {
@@ -321,6 +321,7 @@ p {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 20%;
 }
 
 .hero__overlay {
@@ -1203,6 +1204,26 @@ p {
   color: var(--color-dim);
 }
 
+.footer__legal {
+  font-size: 0.9rem;
+  color: var(--color-muted);
+  overflow-wrap: anywhere;
+}
+
+.footer__legal a,
+.footer__copy a {
+  color: var(--color-cream-soft);
+  border-bottom: 1px solid var(--color-line);
+  transition: color var(--dur-base) var(--ease-out);
+}
+
+.footer__legal a:hover,
+.footer__legal a:focus-visible,
+.footer__copy a:hover,
+.footer__copy a:focus-visible {
+  color: var(--color-cream);
+}
+
 /* ============================================================
    Botones flotantes de contacto (izquierda)
    ============================================================ */
@@ -1220,7 +1241,9 @@ p {
 }
 
 .wa-float,
-.ig-float {
+.ig-float,
+.tt-float,
+.fb-float {
   position: relative;
   width: 4rem;
   height: 4rem;
@@ -1236,6 +1259,14 @@ p {
   background: #25d366;
 }
 
+.tt-float {
+  background: #000000;
+}
+
+.fb-float {
+  background: #1877f2;
+}
+
 .ig-float {
   background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
 }
@@ -1243,12 +1274,18 @@ p {
 .wa-float:hover,
 .wa-float:focus-visible,
 .ig-float:hover,
-.ig-float:focus-visible {
+.ig-float:focus-visible,
+.tt-float:hover,
+.tt-float:focus-visible,
+.fb-float:hover,
+.fb-float:focus-visible {
   transform: translateY(-4px);
 }
 
 .wa-float__icon,
-.ig-float__icon {
+.ig-float__icon,
+.tt-float__icon,
+.fb-float__icon {
   width: 1.9rem;
   height: 1.9rem;
 }
@@ -1394,10 +1431,37 @@ p {
   }
 }
 
-/* Con 9 enlaces el menú completo ya no cabe bajo 1360px: pasa al botón de menú */
+/* Pantallas de notebook: se oculta el texto del logo para que quepan las 10 secciones */
 @media (max-width: 1360px) {
+  .nav__logo-text {
+    display: none;
+  }
+}
+
+/* Pantallas angostas o con zoom: letra y espacios más chicos para mantener las secciones a la vista */
+@media (max-width: 1100px) and (min-width: 901px) {
+  .nav {
+    gap: var(--space-8);
+  }
+
+  .nav__logo-img {
+    height: 3rem;
+  }
+
+  .nav__list {
+    gap: 0.7rem;
+  }
+
+  .nav__link {
+    font-size: 0.8rem;
+  }
+}
+
+/* Bajo 900px el menú completo ya no cabe: pasa al botón de menú */
+@media (max-width: 900px) {
   .nav__toggle {
     display: flex;
+    margin-left: auto;
   }
 
   .nav__menu {
@@ -1409,6 +1473,10 @@ p {
     align-items: flex-start;
     gap: var(--space-5);
     padding: var(--space-6);
+    /* El header es fijo: si el menú no cabe en la pantalla (zoom alto), se desplaza por dentro */
+    max-height: calc(100dvh - var(--header-h) - var(--space-4));
+    overflow-y: auto;
+    overscroll-behavior: contain;
     background: rgba(4, 12, 23, 0.98);
     border: 1px solid var(--color-line);
     box-shadow: var(--shadow-card);
@@ -1612,7 +1680,7 @@ p {
 }
 
 .from-pitch__lead {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: clamp(1.05rem, 1.6vw, 1.3rem);
   line-height: 1.6;
   color: var(--ink-muted);
@@ -1676,7 +1744,7 @@ p {
 }
 
 .polaroid__caption {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: clamp(0.85rem, 1.4vw, 1rem);
   line-height: 1.2;
   color: #2a3340;
@@ -1780,7 +1848,7 @@ p {
 }
 
 .work__subtitle {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: clamp(1.05rem, 1.6vw, 1.25rem);
   line-height: 1.6;
   color: var(--ink-muted);
@@ -1862,7 +1930,7 @@ p.title-band {
 }
 
 .service-row__text {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: clamp(1.05rem, 1.5vw, 1.2rem);
   line-height: 1.65;
   color: var(--ink-muted);
@@ -1893,7 +1961,7 @@ p.title-band {
 
 .service-row__meta-value {
   margin: 0;
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: 1.05rem;
   color: var(--ink-text);
 }
@@ -2466,7 +2534,7 @@ p.title-band {
 }
 
 .interview__text {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: clamp(1.05rem, 1.4vw, 1.2rem);
   line-height: 1.55;
   color: var(--ink-muted);

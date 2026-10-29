@@ -1,0 +1,497 @@
+/* ============================================================
+   COMPROBANTE · Resultado del pago Webpay
+   Tarjeta blanca sobre fondo azul marino. Usa los tokens de styles.css.
+   ============================================================ */
+
+.comp {
+  --comp-navy: #0b1f3a;
+  --comp-navy-deep: #06142a;
+  --comp-ink: #10213a;
+  --comp-text: #3a4a60;
+  --comp-muted: #6b7a8f;
+  --comp-line: #e3e8ef;
+  --comp-soft: #f5f7fa;
+  --comp-ok: #15803d;
+  --comp-ok-bg: #ecfdf3;
+  --comp-ok-line: #bbf0cf;
+  --comp-error: #b42318;
+  --comp-error-bg: #fef3f2;
+  --comp-error-line: #fecdca;
+  --comp-warn: #b54708;
+  --comp-warn-bg: #fffaeb;
+  --comp-warn-line: #fedf89;
+
+  padding: calc(var(--header-h) + var(--space-8)) 0 var(--space-11);
+  min-height: 70vh;
+  background:
+    radial-gradient(120% 60% at 50% 0%, rgba(59, 130, 246, 0.16), transparent 70%),
+    linear-gradient(180deg, var(--comp-navy) 0%, var(--comp-navy-deep) 100%);
+}
+
+.comp__card {
+  max-width: 40rem;
+  margin: 0 auto;
+  background: #ffffff;
+  color: var(--comp-text);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 30px 70px -30px rgba(0, 0, 0, 0.7);
+  overflow: hidden;
+  font-family: var(--font-sans);
+}
+
+/* --- Cabecera de la tarjeta --- */
+
+.comp__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-5) var(--space-7);
+  border-bottom: 1px solid var(--comp-line);
+}
+
+.comp__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.comp__brand img {
+  width: 2.5rem;
+  height: 2.5rem;
+  object-fit: contain;
+  flex: none;
+}
+
+.comp__brand-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  color: var(--comp-ink);
+}
+
+.comp__doc-label {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--comp-muted);
+  text-align: right;
+}
+
+/* --- Estado --- */
+
+.comp__status {
+  text-align: center;
+  padding: var(--space-8) var(--space-7) var(--space-6);
+}
+
+.comp__icon {
+  width: 4rem;
+  height: 4rem;
+  margin: 0 auto var(--space-4);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  border: 1px solid currentColor;
+}
+
+.comp__icon svg {
+  width: 2rem;
+  height: 2rem;
+}
+
+.comp__title {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: clamp(1.35rem, 4vw, 1.6rem);
+  line-height: 1.25;
+  color: var(--comp-ink);
+  margin: 0 0 var(--space-2);
+}
+
+.comp__subtitle {
+  font-size: 0.95rem;
+  color: var(--comp-muted);
+  margin: 0;
+}
+
+.comp--ok .comp__icon {
+  color: var(--comp-ok);
+  background: var(--comp-ok-bg);
+  border-color: var(--comp-ok-line);
+}
+
+.comp--ok .comp__title {
+  color: var(--comp-ok);
+}
+
+.comp--error .comp__icon {
+  color: var(--comp-error);
+  background: var(--comp-error-bg);
+  border-color: var(--comp-error-line);
+}
+
+.comp--warn .comp__icon {
+  color: var(--comp-warn);
+  background: var(--comp-warn-bg);
+  border-color: var(--comp-warn-line);
+}
+
+.comp__subtitle--loading {
+  padding: var(--space-8) var(--space-7);
+  text-align: center;
+}
+
+/* --- Tabla de datos --- */
+
+.comp__body {
+  padding: 0 var(--space-7) var(--space-6);
+}
+
+.comp__table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.95rem;
+  border: 1px solid var(--comp-line);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.comp__table th,
+.comp__table td {
+  padding: 0.7rem 1rem;
+  border-bottom: 1px solid var(--comp-line);
+  vertical-align: top;
+  text-align: left;
+}
+
+.comp__table tr:last-child th,
+.comp__table tr:last-child td {
+  border-bottom: 0;
+}
+
+.comp__table th {
+  width: 42%;
+  font-weight: 500;
+  color: var(--comp-muted);
+  background: var(--comp-soft);
+}
+
+.comp__table td {
+  color: var(--comp-ink);
+  font-weight: 500;
+  overflow-wrap: anywhere;
+  font-variant-numeric: tabular-nums;
+}
+
+.comp__table .comp__amount {
+  font-weight: 700;
+}
+
+/* --- Mensajes --- */
+
+.comp__msg {
+  margin: var(--space-5) 0 0;
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  font-size: 0.93rem;
+  line-height: 1.55;
+  background: var(--comp-soft);
+  color: var(--comp-text);
+}
+
+.comp--ok .comp__msg {
+  background: var(--comp-ok-bg);
+  color: #14532d;
+}
+
+.comp--error .comp__msg {
+  background: var(--comp-error-bg);
+  color: #7a271a;
+}
+
+.comp--warn .comp__msg {
+  background: var(--comp-warn-bg);
+  color: #7a2e0e;
+}
+
+.comp__causes {
+  margin: var(--space-3) 0 0;
+  font-size: 0.93rem;
+  color: var(--comp-text);
+}
+
+.comp__causes p {
+  margin: 0 0 var(--space-1);
+  font-weight: 600;
+  color: var(--comp-ink);
+}
+
+.comp__causes ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.comp__causes li {
+  list-style: disc;
+  margin-bottom: 0.15rem;
+}
+
+/* --- Botones --- */
+
+.comp__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  padding: 0 var(--space-7) var(--space-7);
+}
+
+.comp__btn {
+  flex: 1 1 10rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 2.9rem;
+  padding: 0.65rem 1.1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--comp-line);
+  background: #ffffff;
+  color: var(--comp-ink);
+  font: 600 0.92rem/1.2 var(--font-sans);
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.18s ease, border-color 0.18s ease;
+}
+
+.comp__btn:hover,
+.comp__btn:focus-visible {
+  background: var(--comp-soft);
+  border-color: #c9d2de;
+}
+
+.comp__btn--primary {
+  flex-basis: 100%;
+  background: var(--comp-navy);
+  border-color: var(--comp-navy);
+  color: #ffffff;
+}
+
+.comp__btn--primary:hover,
+.comp__btn--primary:focus-visible {
+  background: #12305a;
+  border-color: #12305a;
+}
+
+.comp__btn--wa {
+  color: #0f6b38;
+  border-color: #b7e4c7;
+}
+
+.comp__btn svg,
+.comp__btn img {
+  width: 1.1rem;
+  height: 1.1rem;
+  flex: none;
+}
+
+.comp__btn:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* --- Pie de la tarjeta --- */
+
+.comp__foot {
+  padding: var(--space-5) var(--space-7);
+  background: var(--comp-soft);
+  border-top: 1px solid var(--comp-line);
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--comp-muted);
+  text-align: center;
+}
+
+.comp__foot p {
+  margin: 0;
+}
+
+.comp__foot strong {
+  color: var(--comp-ink);
+  font-weight: 600;
+}
+
+.comp__foot a {
+  color: var(--comp-ink);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  overflow-wrap: anywhere;
+}
+
+/* --- Celular --- */
+
+@media (max-width: 480px) {
+  .comp {
+    padding-top: calc(var(--header-h) + var(--space-5));
+  }
+
+  .comp__head,
+  .comp__status,
+  .comp__body,
+  .comp__actions,
+  .comp__foot {
+    padding-left: var(--space-5);
+    padding-right: var(--space-5);
+  }
+
+  .comp__head {
+    flex-wrap: wrap;
+  }
+
+  .comp__doc-label {
+    text-align: left;
+  }
+
+  .comp__table,
+  .comp__table tbody,
+  .comp__table tr {
+    display: block;
+  }
+
+  .comp__table tr {
+    border-bottom: 1px solid var(--comp-line);
+  }
+
+  .comp__table tr:last-child {
+    border-bottom: 0;
+  }
+
+  .comp__table th,
+  .comp__table td {
+    display: block;
+    border-bottom: 0;
+    width: auto;
+    padding: 0.55rem 0.85rem;
+  }
+
+  .comp__table th {
+    padding-bottom: 0.15rem;
+    font-size: 0.8rem;
+  }
+
+  .comp__table th,
+  .comp__table td {
+    background: #ffffff;
+  }
+
+  .comp__table td {
+    padding-top: 0;
+  }
+
+  .comp__btn {
+    flex-basis: 100%;
+  }
+}
+
+/* --- Impresión / PDF: solo la tarjeta del comprobante --- */
+
+@media print {
+  @page {
+    margin: 14mm;
+  }
+
+  html,
+  body {
+    background: #ffffff !important;
+    color: #000000;
+  }
+
+  body > *:not(main),
+  .header,
+  .footer,
+  .social-float,
+  .comp__actions {
+    display: none !important;
+  }
+
+  .comp {
+    padding: 0;
+    min-height: 0;
+    background: none;
+  }
+
+  .comp .container {
+    max-width: none;
+    padding: 0;
+  }
+
+  .comp__card {
+    max-width: none;
+    box-shadow: none;
+    border: 1px solid var(--comp-line);
+    break-inside: avoid;
+  }
+
+  .comp__card,
+  .comp__card * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Compacto para que quepa en una sola hoja */
+  .comp__head {
+    padding: 0.75rem 1.25rem;
+  }
+
+  .comp__status {
+    padding: 1.25rem 1.25rem 1rem;
+  }
+
+  .comp__icon {
+    width: 2.75rem;
+    height: 2.75rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .comp__icon svg {
+    width: 1.4rem;
+    height: 1.4rem;
+  }
+
+  .comp__body {
+    padding: 0 1.25rem 1rem;
+  }
+
+  .comp__table {
+    font-size: 0.85rem;
+  }
+
+  .comp__table th,
+  .comp__table td {
+    padding: 0.45rem 0.8rem;
+  }
+
+  .comp__msg {
+    margin-top: 0.75rem;
+    padding: 0.6rem 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  .comp__foot {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.75rem;
+  }
+}
+
+/* Botones flotantes: ocultos solo en el comprobante y solo en pantallas
+   menores a 768px, para que no tapen la tabla. */
+@media (max-width: 767.98px) {
+  .social-float {
+    display: none;
+  }
+}

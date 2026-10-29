@@ -305,99 +305,106 @@
   background: rgba(248, 113, 113, 0.06);
 }
 
-/* --- Comprobante (comprobante.html reutiliza estas clases) --- */
+/* ============================================================
+   TÉRMINOS Y CONDICIONES
+   ============================================================ */
 
-.comp {
+.terms {
   padding: calc(var(--header-h) + var(--space-9)) 0 var(--space-12);
-  min-height: 70vh;
 }
 
-.comp__card {
-  max-width: 34rem;
+.terms__doc {
+  max-width: 46rem;
   margin: 0 auto;
-  background: var(--color-surface);
-  border: 1px solid var(--color-line);
-  border-radius: var(--radius-lg);
-  padding: var(--space-8);
-  box-shadow: var(--shadow-card);
-  text-align: center;
 }
 
-.comp__badge {
-  display: inline-block;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 0.8rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  border-radius: 999px;
-  padding: 0.35rem 1rem;
-  margin-bottom: var(--space-5);
-  border: 1px solid var(--color-line);
-}
-
-.comp__badge--ok {
-  color: #4ade80;
-  border-color: rgba(74, 222, 128, 0.4);
-  background: rgba(74, 222, 128, 0.08);
-}
-
-.comp__badge--error {
-  color: #f87171;
-  border-color: rgba(248, 113, 113, 0.4);
-  background: rgba(248, 113, 113, 0.08);
-}
-
-.comp__title {
+.terms__title {
   font-family: var(--font-editorial);
   font-weight: 500;
-  font-size: 2rem;
+  font-size: clamp(2.2rem, 5vw, 3rem);
+  line-height: 1.1;
   color: var(--color-cream);
   margin: 0 0 var(--space-2);
 }
 
-.comp__subtitle {
-  color: var(--color-muted);
-  font-size: 0.95rem;
-  margin: 0 0 var(--space-6);
+.terms__updated {
+  color: var(--color-dim);
+  font-size: 0.9rem;
+  margin: 0 0 var(--space-8);
 }
 
-.comp__list {
-  margin: 0 0 var(--space-6);
-  text-align: left;
+.terms__block {
+  padding: var(--space-6) 0;
+  border-top: 1px solid var(--color-line-soft);
 }
 
-.comp__row {
-  display: flex;
-  justify-content: space-between;
+.terms__block h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 0.04em;
+  color: var(--color-cream);
+  margin: 0 0 var(--space-3);
+}
+
+.terms__block h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--color-cream);
+  margin: var(--space-5) 0 var(--space-2);
+}
+
+.terms__block p,
+.terms__block li {
+  color: var(--color-cream-soft);
+  margin: 0 0 var(--space-3);
+}
+
+.terms__block ul {
+  padding-left: 1.2rem;
+  margin: 0;
+}
+
+.terms__block a,
+.terms__back a {
+  color: var(--color-accent);
+  overflow-wrap: anywhere;
+}
+
+.terms__facts {
+  margin: var(--space-4) 0 0;
+}
+
+.terms__facts > div {
+  display: grid;
+  grid-template-columns: 7rem minmax(0, 1fr);
   gap: var(--space-4);
   padding: var(--space-3) 0;
   border-bottom: 1px solid var(--color-line-soft);
 }
 
-.comp__row dt {
+.terms__facts dt {
   color: var(--color-muted);
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
   font-family: var(--font-display);
   font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
-.comp__row dd {
+.terms__facts dd {
   margin: 0;
   color: var(--color-cream);
-  text-align: right;
 }
 
-.comp__msg {
-  font-size: 0.95rem;
-  color: var(--color-cream-soft);
-  margin: 0 0 var(--space-6);
+.terms__back {
+  margin-top: var(--space-6);
 }
 
-.comp__actions {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
+@media (max-width: 560px) {
+  .terms__facts > div {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-1);
+  }
 }
