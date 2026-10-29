@@ -1649,7 +1649,7 @@ p {
 }
 
 .from-pitch__lead {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: clamp(1.05rem, 1.6vw, 1.3rem);
   line-height: 1.6;
   color: var(--ink-muted);
@@ -1713,7 +1713,7 @@ p {
 }
 
 .polaroid__caption {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: clamp(0.85rem, 1.4vw, 1rem);
   line-height: 1.2;
   color: #2a3340;
@@ -1817,7 +1817,7 @@ p {
 }
 
 .work__subtitle {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: clamp(1.05rem, 1.6vw, 1.25rem);
   line-height: 1.6;
   color: var(--ink-muted);
@@ -1899,7 +1899,7 @@ p.title-band {
 }
 
 .service-row__text {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: clamp(1.05rem, 1.5vw, 1.2rem);
   line-height: 1.65;
   color: var(--ink-muted);
@@ -1930,7 +1930,7 @@ p.title-band {
 
 .service-row__meta-value {
   margin: 0;
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: 1.05rem;
   color: var(--ink-text);
 }
@@ -2503,7 +2503,7 @@ p.title-band {
 }
 
 .interview__text {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: clamp(1.05rem, 1.4vw, 1.2rem);
   line-height: 1.55;
   color: var(--ink-muted);
