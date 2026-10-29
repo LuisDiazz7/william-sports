@@ -99,6 +99,11 @@
   overflow-wrap: anywhere;
 }
 
+/* Correo e Instagram son largos: letra más chica para que entren en una línea */
+.contact-card__value--long {
+  font-size: clamp(1.25rem, 1.9vw, 1.5rem);
+}
+
 .contact-card__cta {
   margin-top: auto;
   padding-top: 1.5rem;
