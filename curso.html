@@ -107,6 +107,9 @@
       align-items: flex-start;
       gap: 1.25rem;
       padding: 1.5rem;
+      max-height: calc(100dvh - var(--header-h) - 1rem);
+      overflow-y: auto;
+      overscroll-behavior: contain;
       background: rgba(4, 12, 23, 0.98);
       border: 1px solid var(--line);
       box-shadow: 0 50px 90px -50px rgba(0, 0, 0, 0.95);
@@ -449,7 +452,7 @@
 </div>
 <div class="toast" id="toast" role="status" hidden></div>
 
-<script src="assets/js/main.js?v=4"></script>
+<script src="assets/js/main.js?v=5"></script>
 <script src="assets/js/pago.js?v=2"></script>
 <script>
 (function () {

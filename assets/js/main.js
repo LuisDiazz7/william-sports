@@ -266,7 +266,9 @@ if ('IntersectionObserver' in window && !prefersReducedMotion) {
         }
       });
     },
-    { threshold: 0.15, rootMargin: '0px 0px -8% 0px' }
+    // threshold 0: con zoom alto un bloque puede medir varias pantallas y nunca
+    // llegar a mostrarse en un 15 %, así que basta con que asome
+    { threshold: 0, rootMargin: '0px 0px -8% 0px' }
   );
 
   revealEls.forEach((el) => revealObserver.observe(el));

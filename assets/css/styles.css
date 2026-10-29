@@ -1446,6 +1446,10 @@ p {
     align-items: flex-start;
     gap: var(--space-5);
     padding: var(--space-6);
+    /* El header es fijo: si el menú no cabe en la pantalla (zoom alto), se desplaza por dentro */
+    max-height: calc(100dvh - var(--header-h) - var(--space-4));
+    overflow-y: auto;
+    overscroll-behavior: contain;
     background: rgba(4, 12, 23, 0.98);
     border: 1px solid var(--color-line);
     box-shadow: var(--shadow-card);
