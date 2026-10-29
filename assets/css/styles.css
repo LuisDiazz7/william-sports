@@ -175,12 +175,12 @@ p {
 .nav {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   height: 100%;
-  gap: var(--space-10);
+  gap: clamp(var(--space-9), 6vw, 6rem);
 }
 
-/* El menú usa casi todo el ancho: logo a la izquierda, secciones a la derecha */
+/* Logo a la izquierda y las secciones justo a continuación, no pegadas al borde derecho */
 .nav.container {
   width: min(1400px, calc(100% - 4rem));
 }
@@ -215,7 +215,7 @@ p {
 
 .nav__list {
   display: flex;
-  gap: clamp(var(--space-4), 1.6vw, var(--space-6));
+  gap: clamp(0.85rem, 1.3vw, var(--space-6));
 }
 
 .nav__item {
@@ -1431,10 +1431,37 @@ p {
   }
 }
 
-/* Con 10 enlaces el menú completo ya no cabe bajo 1460px: pasa al botón de menú */
-@media (max-width: 1460px) {
+/* Pantallas de notebook: se oculta el texto del logo para que quepan las 10 secciones */
+@media (max-width: 1360px) {
+  .nav__logo-text {
+    display: none;
+  }
+}
+
+/* Pantallas angostas o con zoom: letra y espacios más chicos para mantener las secciones a la vista */
+@media (max-width: 1100px) and (min-width: 821px) {
+  .nav {
+    gap: var(--space-8);
+  }
+
+  .nav__logo-img {
+    height: 3rem;
+  }
+
+  .nav__list {
+    gap: 0.7rem;
+  }
+
+  .nav__link {
+    font-size: 0.8rem;
+  }
+}
+
+/* Bajo 820px el menú completo ya no cabe: pasa al botón de menú */
+@media (max-width: 820px) {
   .nav__toggle {
     display: flex;
+    margin-left: auto;
   }
 
   .nav__menu {
