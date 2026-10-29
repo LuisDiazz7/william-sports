@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
-    content="Williams Olave — ojeador de talentos, entrenador de escuelas de fútbol y capacitador. Observar, formar y desarrollar dentro del fútbol.">
-  <title>Historia | Williams Sport</title>
+    content="Tareas de entrenamiento de fútbol de Williams Sport: ejercicios en imágenes y videos.">
+  <title>Tareas Entrenamiento | Williams Sport</title>
 
   <!-- Fuentes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,7 +16,8 @@
     rel="stylesheet">
 
   <!-- CSS -->
-  <link rel="stylesheet" href="assets/css/styles.css?v=61">
+  <link rel="stylesheet" href="assets/css/styles.css?v=62">
+  <link rel="stylesheet" href="assets/css/tareas.css?v=1">
 </head>
 
 <body>
@@ -52,16 +53,16 @@
             <a href="scouting.html" class="nav__link">Scouting</a>
           </li>
           <li class="nav__item">
-            <a href="auspiciadores.html" class="nav__link">Auspiciadores</a>
+            <a href="tareas-entrenamiento.html" class="nav__link is-active">Tareas Entrenamiento</a>
           </li>
           <li class="nav__item">
-            <a href="sobre-mi.html" class="nav__link is-active">Historia</a>
+            <a href="auspiciadores.html" class="nav__link">Auspiciadores</a>
           </li>
           <li class="nav__item">
             <a href="galeria.html" class="nav__link">Imágenes</a>
           </li>
           <li class="nav__item">
-            <a href="contacto.html" class="nav__link">Contacto</a>
+            <a href="contacto.html" class="nav__link is-active">Contacto</a>
           </li>
         </ul>
       </div>
@@ -69,55 +70,109 @@
   </header>
 
   <main>
-    <!-- Sobre mí -->
-    <section id="sobre-mi" class="about about--editorial">
+    <!-- Tareas de entrenamiento -->
+    <section id="tareas" class="work tareas">
       <div class="container">
-        <div class="about__grid">
-          <div class="about__media" data-reveal>
-            <div class="hero__kicker">
-              <span>WILLIAMS SPORT</span>
-              <span class="hero__kicker-sep">·</span>
-              <span>FÚTBOL</span>
-            </div>
-            <div class="about__frame about__frame--editorial">
-              <img src="assets/images/willie.png" alt="Retrato de Williams Olave" class="about__img" loading="lazy"
-                decoding="async">
-            </div>
-          </div>
-
-          <div class="about__content" data-reveal>
-            <header class="section__header">
-              <span class="section__kicker">¿QUIÉN ES WILLIAMS?</span>
-            </header>
-
-            <div class="about__text-block">
-              <h3 class="about__subheading title-band">Biografía</h3>
-              <p class="about__text">
-                Todo partió un 11 de marzo del año 2019, cuando el Sr. Williams decide iniciar sus estudios de
-                Entrenador de Fútbol en INAF, luego de recibir una llamada telefónica avisando que quedaba sólo 1 cupo.
-                Desde entonces se mantuvo con la idea de lograr ser el mejor Entrenador del Fútbol Chileno.
-              </p>
-              <p class="about__text">
-                Luego de titularse, llegó a un acuerdo con el Banco Central de Chile, su anterior trabajo como
-                Ingeniero, y se dedicó 100% al fútbol. Dada esa contextualización, decide el año 2025 iniciar el
-                diseño de charlas, clínicas, talleres, cursos y personalizados, determinando su propia METODOLOGÍA.
-              </p>
-            </div>
-
-            <div class="about__text-block">
-              <h3 class="about__subheading title-band">Metodología</h3>
-              <p class="about__text">
-                Sus métodos, procesos y tareas de entrenamiento están basados en la conexión del futbolista con el
-                balón y en la sinergia del relacionismo entre los jugadores. Para ello trabaja todo con balón y
-                determina una batería de trabajos que le permiten desarrollar y trabajar equipos.
-              </p>
-              <p class="about__text">
-                Su forma de liderazgo hace que el jugador se sienta cómodo y tenga un crecimiento profesional,
-                haciéndolos mejores jugadores desde el punto de vista técnico, táctico, físico y de fortaleza mental.
-              </p>
-            </div>
-          </div>
+        <div class="hero__kicker page-kicker" data-reveal>
+          <span>WILLIAMS SPORT</span>
+          <span class="hero__kicker-sep">·</span>
+          <span>FÚTBOL</span>
         </div>
+        <header class="work__header" data-reveal>
+          <span class="work__eyebrow">TAREAS ENTRENAMIENTO</span>
+          <h1 class="work__title work__title--sm title-band">Tareas de entrenamiento</h1>
+          <p class="work__subtitle work__subtitle--sans">
+            Ejercicios y tareas de campo para el desarrollo de jugadores, en imágenes y videos.
+          </p>
+        </header>
+
+        <!--
+          Cómo agregar una tarea: reemplaza un cuadro "Próximamente" por uno de estos.
+
+          Con imagen (la foto va en assets/images/):
+          <li class="tarea">
+            <button class="tarea__media" type="button" data-gallery-btn
+              data-src="assets/images/NOMBRE.jpg" data-alt="Descripción de la foto">
+              <img src="assets/images/NOMBRE.jpg" alt="Descripción de la foto" loading="lazy" decoding="async">
+              <span class="tarea__zoom">Ampliar</span>
+            </button>
+            <div class="tarea__body">
+              <span class="tarea__label">Tarea 01</span>
+              <h2 class="tarea__title">Título de la tarea</h2>
+              <p class="tarea__text">Explicación corta del ejercicio.</p>
+            </div>
+          </li>
+
+          Con video (el video va en assets/videos/):
+          <li class="tarea">
+            <button class="tarea__media" type="button" data-gallery-btn data-video="assets/videos/NOMBRE.mp4"
+              aria-label="Ver video: Título de la tarea">
+              <video src="assets/videos/NOMBRE.mp4" autoplay muted loop playsinline preload="metadata"></video>
+              <span class="tarea__play" aria-hidden="true"></span>
+            </button>
+            <div class="tarea__body">
+              <span class="tarea__label">Tarea 02</span>
+              <h2 class="tarea__title">Título de la tarea</h2>
+              <p class="tarea__text">Explicación corta del ejercicio.</p>
+            </div>
+          </li>
+        -->
+        <ul class="tareas__grid" data-reveal>
+          <li class="tarea tarea--soon">
+            <div class="tarea__media">
+              <span class="tarea__soon">Próximamente</span>
+            </div>
+            <div class="tarea__body">
+              <span class="tarea__label">Tarea 01</span>
+              <h2 class="tarea__title">Nueva tarea</h2>
+            </div>
+          </li>
+          <li class="tarea tarea--soon">
+            <div class="tarea__media">
+              <span class="tarea__soon">Próximamente</span>
+            </div>
+            <div class="tarea__body">
+              <span class="tarea__label">Tarea 02</span>
+              <h2 class="tarea__title">Nueva tarea</h2>
+            </div>
+          </li>
+          <li class="tarea tarea--soon">
+            <div class="tarea__media">
+              <span class="tarea__soon">Próximamente</span>
+            </div>
+            <div class="tarea__body">
+              <span class="tarea__label">Tarea 03</span>
+              <h2 class="tarea__title">Nueva tarea</h2>
+            </div>
+          </li>
+          <li class="tarea tarea--soon">
+            <div class="tarea__media">
+              <span class="tarea__soon">Próximamente</span>
+            </div>
+            <div class="tarea__body">
+              <span class="tarea__label">Tarea 04</span>
+              <h2 class="tarea__title">Nueva tarea</h2>
+            </div>
+          </li>
+          <li class="tarea tarea--soon">
+            <div class="tarea__media">
+              <span class="tarea__soon">Próximamente</span>
+            </div>
+            <div class="tarea__body">
+              <span class="tarea__label">Tarea 05</span>
+              <h2 class="tarea__title">Nueva tarea</h2>
+            </div>
+          </li>
+          <li class="tarea tarea--soon">
+            <div class="tarea__media">
+              <span class="tarea__soon">Próximamente</span>
+            </div>
+            <div class="tarea__body">
+              <span class="tarea__label">Tarea 06</span>
+              <h2 class="tarea__title">Nueva tarea</h2>
+            </div>
+          </li>
+        </ul>
       </div>
     </section>
   </main>
@@ -137,8 +192,8 @@
           <li class="footer__item"><a href="entrenamientos.html" class="footer__link">Personalizados</a></li>
           <li class="footer__item"><a href="cursos.html" class="footer__link">Cursos</a></li>
           <li class="footer__item"><a href="scouting.html" class="footer__link">Scouting</a></li>
+          <li class="footer__item"><a href="tareas-entrenamiento.html" class="footer__link">Tareas Entrenamiento</a></li>
           <li class="footer__item"><a href="auspiciadores.html" class="footer__link">Auspiciadores</a></li>
-          <li class="footer__item"><a href="sobre-mi.html" class="footer__link">Historia</a></li>
           <li class="footer__item"><a href="galeria.html" class="footer__link">Galería Imágenes</a></li>
           <li class="footer__item"><a href="contacto.html" class="footer__link">Contacto</a></li>
         </ul>
@@ -182,7 +237,8 @@
       </svg>
     </button>
     <div class="lightbox__content">
-      <img src="" alt="" class="lightbox__img" id="lightbox-img" loading="lazy" decoding="async">
+      <img src="" alt="" class="lightbox__img" id="lightbox-img" loading="lazy" decoding="async" hidden>
+      <video src="" class="lightbox__video" id="lightbox-video" controls playsinline muted hidden></video>
     </div>
   </div>
 
