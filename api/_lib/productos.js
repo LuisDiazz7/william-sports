@@ -6,7 +6,7 @@ const PRODUCTOS = {
     nombre: 'Clínica Certificado Monitor de Fútbol',
     edicion: '2da versión',
     glosa: 'Clínica Certificado Monitor de Fútbol - 13 nov 2026',
-    monto: 50,
+    monto: 100000,
     moneda: 'CLP',
     buyOrderPrefix: 'CLI26',
   },
