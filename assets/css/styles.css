@@ -1431,8 +1431,8 @@ p {
   }
 }
 
-/* Con 9 enlaces el menú completo ya no cabe bajo 1360px: pasa al botón de menú */
-@media (max-width: 1360px) {
+/* Con 10 enlaces el menú completo ya no cabe bajo 1460px: pasa al botón de menú */
+@media (max-width: 1460px) {
   .nav__toggle {
     display: flex;
   }
